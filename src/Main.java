@@ -12,4 +12,11 @@ public class Main {
             System.out.println("i = " + i);
         }
     }
+
+    public class ACIIArt {
+        private static void displayMainMenu(){
+            System.out.printf("Hello and welcome!");
+        }
+
+    }
 }
