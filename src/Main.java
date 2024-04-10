@@ -13,10 +13,7 @@ public class Main {
         }
     }
 
-    public class ACIIArt {
-        private static void displayMainMenu(){
-            System.out.printf("Hello and welcome!");
-        }
+    public void strat(){
 
     }
 }
