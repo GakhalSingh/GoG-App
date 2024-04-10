@@ -41,12 +41,52 @@ public class CSVReader {
         return list;
     }
 
+    public List<Review> readReviews() {
+        List<Review> reviews = new ArrayList<>();
+        try {
+            File file = new File("GoG-App/reviews.csv");
+            Scanner scanner = new Scanner(file);
+
+            // Skip the header line
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
+            }
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(";");
+                if (parts.length == 5) {
+                    int reviewID = Integer.parseInt(parts[0]);
+                    int gameID = Integer.parseInt(parts[1]);
+                    String username = parts[2];
+                    int rating = Integer.parseInt(parts[3]);
+                    String comment = parts[4];
+
+                    Review review = new Review(reviewID, gameID, username, rating, comment);
+                    reviews.add(review);
+                } else {
+                    System.out.println("Ongeldige rij: " + line);
+                }
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Bestand niet gevonden 🥲");
+        }
+        return reviews;
+    }
+
     // dit is om te testen delete nadat we klaar zijn
     public static void main(String[] args) {
         CSVReader csvReader = new CSVReader();
         List<Game> games = csvReader.readGames();
+        List<Review> reviews = csvReader.readReviews();
+
         for (Game game : games) {
             System.out.println(game);
+        }
+
+        for (Review review : reviews) {
+            System.out.println(review);
         }
     }
 }
