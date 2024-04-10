@@ -1,4 +1,4 @@
-BeoordelingID;GameID;Youtuber;Waardering;Opmerking
+ReviewID;GameID;Username;Rating;Comment
 1;1;GamingGuruNL;4;Geweldig spel, heb er echt van genoten!
 2;2;TheGamingQueen;5;Fantastisch spel, zeer aan te bevelen!
 3;3;GameReviewHeld;3;Goed spel, maar kan beter.
