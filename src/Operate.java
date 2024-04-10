@@ -2,10 +2,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-
 public class Operate {
     private List<Game> list;
 
@@ -97,8 +93,11 @@ public class Operate {
         String naam = telNoteRegex.naamValidate();
         String jaartal = telNoteRegex.jaartalValidate();
         String auteur = telNoteRegex.auteurValidate();
+        double prijs = telNoteRegex.prijsValidate();
+        String gameplay = telNoteRegex.gameplayValidate();
+        String graphics = telNoteRegex.graphicsValidate();
+        String storyline = telNoteRegex.storylineValidate();
 
-        int prijs = telNoteRegex.prijsValidate();
 
         Game game = new Game(naam,jaartal,auteur,prijs,gameplay,graphics,storyline);
         this.list.add(game);
@@ -107,7 +106,13 @@ public class Operate {
     }
 
     public void showAll() {
-        System.out.println ("alle game te zien");
+        if (this.list.size() == 0) {
+            System.out.println("No games found");
+            return;
+        }
+        for (int i = 0; i < this.list.size(); i++) {
+            System.out.println (this.list.get(i));
+        }
     }
 
     public void searchByNaam() {

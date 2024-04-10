@@ -64,14 +64,17 @@ public class Game {
     }
 
     @Override
+    @Override
     public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", gameTitle='" + gameTitle + '\'' +
-                ", platform='" + platform + '\'' +
-                ", releaseYear=" + releaseYear +
-                ", onSale=" + onSale +
-                ", price=" + price +
-                '}';
+        StringBuffer sb = new StringBuffer();
+        sb.append("ID").append(this.id).append("#").append("\t");
+        sb.append("Naam: ").append(this.gameTitle).append("\t\t");
+        sb.append("Jaartal: ").append(this.jaartal).append("\t\t");
+        sb.append("Auteur: ").append(this.auteur).append("\t\t");
+        sb.append("Prijs: ").append(this.prijs).append("\t\t\n\n");
+        sb.append("Gameplay: ").append(this.gameplay).append("\n");
+        sb.append("Graphics: ").append(this.graphics).append("\n");
+        sb.append("Storyline: ").append(this.storyline).append("\n");
+        return sb.toString();
     }
 }

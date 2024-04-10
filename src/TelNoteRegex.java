@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+
+
 public class TelNoteRegex {
     public int menuItemValidate (int min, int max){
         String regex = "[1-9]{1}";
@@ -65,8 +67,8 @@ public class TelNoteRegex {
         }
     }
 
-    public int prijsValidate(){
-        String regex = "[1-9]{1,}";
+    public double prijsValidate(){
+        String regex = "[0-9]{1,}";
         Scanner scanner = new Scanner(System.in);
         while(true){
             System.out.println("Voeg prijs in: ");
@@ -80,13 +82,43 @@ public class TelNoteRegex {
     }
 
     public String gameplayValidate(){
-        String regex = "[a-zA-Z0-9]{1,}";
+
         Scanner scanner = new Scanner(System.in);
         while(true){
             System.out.println("Voeg review van gameplay in: ");
             String input = scanner.nextLine();
-            if(input.matches(regex)){
+            if(input != null){
                 return input;
+            }else{
+                System.out.println("Onjuist ingevoerd! Opnieuw invoeren. ");
+            }
+        }
+    }
+
+    public String graphicsValidate(){
+
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            System.out.println("Voeg review van graphic in: ");
+            String input = scanner.nextLine();
+            if(input != null){
+                return input;
+            }else{
+                System.out.println("Onjuist ingevoerd! Opnieuw invoeren. ");
+            }
+        }
+    }
+
+    public String storylineValidate(){
+
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            System.out.println("Voeg review van storyline in: ");
+            String input = scanner.nextLine();
+            if(input != null){
+                return input;
+            }else{
+                System.out.println("Onjuist ingevoerd! Opnieuw invoeren. ");
             }
         }
     }
