@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -39,4 +38,25 @@ public class CSVReader {
             System.out.println("CSV bestand niet gevonden 😔");
         }
         return list;
-    }}
+    }
+    public static final String REVIEW_CSV_FILE_PATH = "reviews.csv";
+
+    public int getNextReviewId() {
+        int nextId = 1;
+        try (BufferedReader reader = new BufferedReader(new FileReader(REVIEW_CSV_FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length > 0) {
+                    int reviewId = Integer.parseInt(parts[0]);
+                    if (reviewId >= nextId) {
+                        nextId = reviewId + 1; // Get next ID greater than the highest found
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading review file: " + e.getMessage());
+        }
+        return nextId;
+    }
+    }

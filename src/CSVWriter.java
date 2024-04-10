@@ -27,4 +27,15 @@ public class CSVWriter {
             System.out.println("Fout bij het schrijven naar CSV-bestand: " + e.getMessage());
         }
     }
+
+    private static final String REVIEW_CSV_FILE_PATH = "reviews.csv";
+
+    public void addReviewToCSV(int reviewId, int gameId, int rating, String review) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(REVIEW_CSV_FILE_PATH, true))) {
+            writer.println(reviewId + "," + gameId + "," + rating + "," + review);
+            System.out.println("Review successfully added to CSV file.");
+        } catch (IOException e) {
+            System.out.println("Error writing review to CSV file: " + e.getMessage());
+        }
+    }
 }
