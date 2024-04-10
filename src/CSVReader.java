@@ -39,6 +39,7 @@ public class CSVReader {
         }
         return list;
     }
+
     public static final String REVIEW_CSV_FILE_PATH = "reviews.csv";
 
     public int getNextReviewId() {

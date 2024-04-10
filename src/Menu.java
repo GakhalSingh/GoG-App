@@ -20,11 +20,14 @@ public class Menu {
         System.out.println("     4. Sales                     ");
         System.out.println("     5. Exit                      ");
         System.out.println("**********************************");
-        System.out.print  ("        Kies een optie: ");
-    }public int getMenuChoice() {
+        System.out.print("        Kies een optie: ");
+    }
+
+    public int getMenuChoice() {
 
         return scanner.nextInt();
     }
+
     public void addMenu() {
         System.out.println("*******************************");
         System.out.println("1. Nieuwe game review toevoegen");
@@ -32,7 +35,7 @@ public class Menu {
         System.out.println("3. Alle reviews bekijken");
         System.out.println("4. Terug");
         System.out.println("*******************************");
-        System.out.print  ("   Kies een optie: ");
+        System.out.print("   Kies een optie: ");
         int addMenuChoice = scanner.nextInt();
 
         switch (addMenuChoice) {
@@ -66,7 +69,7 @@ public class Menu {
         System.out.println("4. Alle games bekijken");
         System.out.println("5. Terug");
         System.out.println("*******************************");
-        System.out.print  ("   Kies een optie: ");
+        System.out.print("   Kies een optie: ");
         int searchMenuChoice = scanner.nextInt();
         scanner.nextLine();
 
@@ -102,11 +105,11 @@ public class Menu {
 
     public void orderMenu() {
         System.out.println("******************************");
-        System.out.println("1. Gerangschikt op beoordeling");
-        System.out.println("2. Gerangschikt op prijs");
+        System.out.println("1. Gerangschikt op beoordeling");// deze review en games
+        System.out.println("2. Gerangschikt op prijs"); // games
         System.out.println("3. Terug");
         System.out.println("******************************");
-        System.out.print  ("   Kies een optie: ");
+        System.out.print("   Kies een optie: ");
         int orderMenuChoice = scanner.nextInt();
 
         switch (orderMenuChoice) {
@@ -126,12 +129,14 @@ public class Menu {
                 break;
         }
     }
+
     static class OrderByBeoordeling implements Comparator<Game> {
         @Override
         public int compare(Game o1, Game o2) {
             return Double.compare(o1.getPrice(), o2.getPrice());
         }
     }
+
     static class OrderByType implements Comparator<Game> {
         @Override
         public int compare(Game o1, Game o2) {
@@ -140,10 +145,12 @@ public class Menu {
     }
 
 
-    public void salesMenu() {
+    public void salesMenu(boolean gameOnSale) {
         System.out.println("******************************");
-        // Implementeer logica voor het tonen van het salesmenu
+        operate.searchBySale(gameOnSale);
+
     }
+
 
     public void closeScanner() {
         scanner.close();

@@ -125,6 +125,20 @@ public class Operate {
             System.out.println("Geen games gevonden uit het jaar " + gameJaar);
         }
     }
+
+    public void searchBySale(Boolean gameOnSale) {
+        boolean found = true;
+        System.out.println("Games in de uitverkoop " + gameOnSale + ":");
+        for (Game game : gameList) {
+            if (game.isOnSale() == gameOnSale) {
+                System.out.println(game);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Geen games gevonden uit het jaar " + gameOnSale);
+        }
+    }
     public void searchByPlatform(String platform) {
         boolean found = false;
         System.out.println("Games op het platform " + platform + ":");

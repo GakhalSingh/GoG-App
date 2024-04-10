@@ -13,6 +13,8 @@ public class Game {
         this.releaseYear = releaseYear;
         this.onSale = onSale;
         this.price = price;
+
+
     }public int getId() {
         return id;
     }public void setId(int id) {
