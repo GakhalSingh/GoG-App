@@ -1,12 +1,11 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Operate operate = new Operate();
         Menu menu = new Menu(operate);
+        CSVWriter csvWriter = new CSVWriter();
         Regex regex = new Regex();
         try {
             while (true) {
@@ -15,7 +14,7 @@ public class Main {
 
                 switch (mainMenuVraag) {
                     case 1:
-                        System.out.println("Je hebt gekozen voor Game Toevoegen.");
+                        System.out.println("Je hebt gekozen voor Game Review Toevoegen.");
                         menu.addMenu();
                         break;
                     case 2:
