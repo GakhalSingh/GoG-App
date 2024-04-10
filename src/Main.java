@@ -1,19 +1,45 @@
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
+        Menu menu = new Menu();
+        try {
+            while (true) {
+                menu.mainMenu();
+                int mainMenuVraag = menu.getMenuChoice();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+                switch (mainMenuVraag) {
+                    case 1:
+                        System.out.println("Je hebt gekozen voor Game Toevoegen.");
+                        menu.addMenu();
+                        break;
+                    case 2:
+                        System.out.println("Je hebt gekozen voor Game Opzoeken.");
+                        menu.searchMenu();
+                        break;
+                    case 3:
+                        System.out.println("Je hebt gekozen voor Ranglijst.");
+                        menu.orderMenu();
+                        break;
+                    case 4:
+                        System.out.println("Je hebt gekozen voor Sales.");
+                        menu.salesMenu();
+                        break;
+                    case 5:
+                        System.out.println("Bedankt voor het gebruik van Gameshop!");
+                        menu.closeScanner();
+                        System.exit(0);
+                    default:
+                        System.out.println("Ongeldige keuze. Probeer opnieuw.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            scanner.close();
         }
-    }
-
-    public void strat(){
-
     }
 }
