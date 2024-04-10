@@ -14,7 +14,7 @@ public class Menu {
     public void mainMenu() {
         System.out.println("**********************************");
         System.out.println("    Welkom bij Gameshop!          ");
-        System.out.println("     1. Game Review Toevoegen     ");
+        System.out.println("     1. Game Reviews Bekijken     ");
         System.out.println("     2. Game Opzoeken             ");
         System.out.println("     3. Ranglijst                 ");
         System.out.println("     4. Sales                     ");
@@ -29,7 +29,8 @@ public class Menu {
         System.out.println("*******************************");
         System.out.println("1. Nieuwe game review toevoegen");
         System.out.println("2. Alle reviews bekijken");
-        System.out.println("3. Terug");
+        System.out.println("3. Reviews per game bekijken");
+        System.out.println("4. Terug");
         System.out.println("*******************************");
         System.out.print  ("   Kies een optie: ");
         int addMenuChoice = scanner.nextInt();
@@ -39,11 +40,14 @@ public class Menu {
                 operate.addNewGameReview();
                 break;
             case 2:
-
                 System.out.println("Alle reviews van games:");
-                operate.showAll();
+                operate.showAllReviews();
                 break;
             case 3:
+                System.out.println("Reviews per game bekijken:");
+                operate.showReviewsByGame();
+                break;
+            case 4:
                 mainMenu();
                 break;
             default:

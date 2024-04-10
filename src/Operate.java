@@ -27,11 +27,65 @@ public class Operate {
         if (gameRate >= 1 && gameRate <= 5) {
             System.out.println("Wat kan je er nog over vertellen?");
             String gameReview = scanner.nextLine();
-            // Voeg logica toe om review aan het spel toe te voegen
+            System.out.println("Voer je gebruikersnaam in:");
+            String username = scanner.nextLine();
+
+            Game game = null;
+            for (Game g : gameList) {
+                if (g.getGameTitle().equalsIgnoreCase(gameNaam)) {
+                    game = g;
+                    break;
+                }
+            }
+
+            if (game != null) {
+                int reviewID = gameList.size() + 1;
+                Review review = new Review(reviewID, game.getId(), username, gameRate, gameReview);
+                csvWriter.createReview(review);
+            } else {
+                System.out.println("Geen game gevonden met de naam: " + gameNaam);
+            }
         } else {
             System.out.println("De rating was ongeldig.");
         }
     }
+
+    public void showAllReviews() {
+        List<Review> reviews = csvReader.readReviews();
+        if (!reviews.isEmpty()) {
+            for (Review review : reviews) {
+                System.out.println(review);
+            }
+        } else {
+            System.out.println("Er zijn nog geen reviews toegevoegd.");
+        }
+    }
+
+    public void showReviewsByGame() {
+        System.out.println("Voer de naam van de game in om de reviews te bekijken:");
+        String gameName = scanner.nextLine();
+        Game game = null;
+        for (Game g : gameList) {
+            if (g.getGameTitle().equalsIgnoreCase(gameName)) {
+                game = g;
+                break;
+            }
+        }
+        if (game != null) {
+            List<Review> reviews = csvWriter.readReviewsForGame(game.getId());
+            if (!reviews.isEmpty()) {
+                System.out.println("Reviews voor " + gameName + ":");
+                for (Review review : reviews) {
+                    System.out.println(review);
+                }
+            } else {
+                System.out.println("Er zijn geen reviews voor " + gameName + ".");
+            }
+        } else {
+            System.out.println("Geen game gevonden met de naam: " + gameName);
+        }
+    }
+
     public void searchByName(String gameName) {
         boolean found = false;
         for (Game game : gameList) {
