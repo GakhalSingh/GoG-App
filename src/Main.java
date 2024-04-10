@@ -5,6 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Operate operate = new Operate();
         Menu menu = new Menu(operate);
+        CSVReader csvReader = new CSVReader();
         CSVWriter csvWriter = new CSVWriter();
         Regex regex = new Regex();
         try {
@@ -14,7 +15,7 @@ public class Main {
 
                 switch (mainMenuVraag) {
                     case 1:
-                        System.out.println("Je hebt gekozen voor Game Review Toevoegen.");
+                        System.out.println("Je hebt gekozen voor Game Review 2Toevoegen.");
                         menu.addMenu();
                         break;
                     case 2:

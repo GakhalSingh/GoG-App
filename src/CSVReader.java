@@ -8,7 +8,7 @@ public class CSVReader {
     public List<Game> readGames() {
         List<Game> list = new ArrayList<>();
         try {
-            File file = new File("GoG-App/games.csv");
+            File file = new File("GoG-App1\\games.csv");
             Scanner scanner = new Scanner(file);
 
             if (scanner.hasNextLine()) {
@@ -39,13 +39,4 @@ public class CSVReader {
             System.out.println("CSV bestand niet gevonden 😔");
         }
         return list;
-    }
-
-    public static void main(String[] args) {
-        CSVReader csvReader = new CSVReader();
-        List<Game> games = csvReader.readGames();
-        for (Game game : games) {
-            System.out.println(game);
-        }
-    }
-}
+    }}

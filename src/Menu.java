@@ -38,7 +38,7 @@ public class Menu {
                 operate.addNewGameReview();
                 break;
             case 2:
-                operate.readGamesFromCSV();
+
                 System.out.println("Alle reviews van games:");
                 operate.showAll();
                 break;
@@ -61,6 +61,7 @@ public class Menu {
         System.out.println("*******************************");
         System.out.print  ("   Kies een optie: ");
         int searchMenuChoice = scanner.nextInt();
+        scanner.nextLine();
 
         switch (searchMenuChoice) {
             case 1:
@@ -71,10 +72,13 @@ public class Menu {
             case 2:
                 System.out.println("Voer het jaar van de game in om te zoeken:");
                 int gameJaar = scanner.nextInt();
+                scanner.nextLine();
                 operate.searchByJaar(gameJaar);
                 break;
             case 3:
-                operate.searchByAuteur();
+                System.out.println("Voer het Platform van de game in om te zoeken:");
+                String gamePlatform = scanner.nextLine();
+                operate.searchByPlatform(gamePlatform);
                 break;
             case 4:
                 operate.showAll();
@@ -100,10 +104,10 @@ public class Menu {
 
         switch (orderMenuChoice) {
             case 1:
-                operate.orderBeoordeling();
+
                 break;
             case 2:
-                operate.orderType();
+
                 break;
             case 3:
                 // Terug naar hoofdmenu
