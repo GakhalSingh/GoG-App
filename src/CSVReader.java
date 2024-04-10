@@ -41,6 +41,8 @@ public class CSVReader {
         return list;
     }
 
+
+    // dit is om te testen delete nadat we klaar zijn
     public static void main(String[] args) {
         CSVReader csvReader = new CSVReader();
         List<Game> games = csvReader.readGames();

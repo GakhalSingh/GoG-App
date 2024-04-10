@@ -13,29 +13,52 @@ public class Game {
         this.releaseYear = releaseYear;
         this.onSale = onSale;
         this.price = price;
-    }public int getId() {
+
+    }
+
+    public int getId() {
         return id;
     }public void setId(int id) {
         this.id = id;
-    }public String getGameTitle() {
+    }
+
+    public String getGameTitle() {
         return gameTitle;
-    }public void setGameTitle(String gameTitle) {
+    }
+
+    public void setGameTitle(String gameTitle) {
         this.gameTitle = gameTitle;
-    }public String getPlatform() {
+    }
+
+    public String getPlatform() {
         return platform;
-    }public void setPlatform(String platform) {
+    }
+
+    public void setPlatform(String platform) {
         this.platform = platform;
-    }public int getReleaseYear() {
+    }
+
+    public int getReleaseYear() {
         return releaseYear;
-    }public void setReleaseYear(int releaseYear) {
+    }
+
+    public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
-    }public boolean isOnSale() {
+    }
+
+    public boolean isOnSale() {
         return onSale;
-    }public void setOnSale(boolean onSale) {
+    }
+
+    public void setOnSale(boolean onSale) {
         this.onSale = onSale;
-    }public double getPrice() {
+    }
+
+    public double getPrice() {
         return price;
-    }public void setPrice(double price) {
+    }
+
+    public void setPrice(double price) {
         this.price = price;
     }
 
