@@ -1,10 +1,13 @@
 import java.util.Scanner;
+import java.util.Comparator;
 
 public class Menu {
+    private Operate operate;
     private Scanner scanner;
 
-    public Menu() {
+    public Menu(Operate operate) {
         this.scanner = new Scanner(System.in);
+        this.operate = operate;
     }
 
     public void mainMenu() {
@@ -53,27 +56,28 @@ public class Menu {
         System.out.println("1. Zoek op naam");
         System.out.println("2. Zoek op jaartal");
         System.out.println("3. Zoek op auteur");
-        System.out.println("4. Alle reviews bekijken");
-        System.out.println("5. Terug");
+        System.out.println("5. Alle reviews bekijken");
+        System.out.println("6. Terug");
         System.out.println("*******************************");
         System.out.print("Kies een optie: ");
         int searchMenuChoice = scanner.nextInt();
 
         switch (searchMenuChoice) {
             case 1:
-                // Implementeer logica voor zoeken op naam
+                operate.searchByNaam();
                 break;
             case 2:
-                // Implementeer logica voor zoeken op jaartal
+                operate.searchByJaartal();
                 break;
             case 3:
-                // Implementeer logica voor zoeken op auteur
+                operate.searchByAuteur();
                 break;
             case 4:
                 // Implementeer logica om alle reviews te bekijken
                 break;
+
             case 5:
-                // Terug naar hoofdmenu
+                mainMenu();
                 break;
             default:
                 System.out.println("Ongeldige keuze. Probeer opnieuw.");
@@ -92,10 +96,10 @@ public class Menu {
 
         switch (orderMenuChoice) {
             case 1:
-                // Implementeer logica voor rangschikken op beoordeling
+                operate.orderBeoordeling();
                 break;
             case 2:
-                // Implementeer logica voor rangschikken op type
+                operate.orderType();
                 break;
             case 3:
                 // Terug naar hoofdmenu
@@ -105,6 +109,7 @@ public class Menu {
                 break;
         }
     }
+
 
     public void salesMenu() {
         System.out.println("******************************");

@@ -1,45 +1,44 @@
 public class Game {
     private int id;
     private String naam;
-    private String jaartal;
+    private int jaartal;
     private String auteur;
+    private double beoordeling;
+    private String type;
 
-    public Game(String naam, String jaartal, String auteur) {
-
+    public Game(String naam, int jaartal, String auteur, double beoordeling, String type) {
+        this.id = id;
         this.naam = naam;
         this.jaartal = jaartal;
         this.auteur = auteur;
+        this.beoordeling = beoordeling;
+        this.type = type;
     }
+
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNaam() {
+    }public String getNaam() {
         return naam;
-    }
-
-    public void setNaam(String naam) {
-        this.naam = naam;
-    }
-
-    public String getJaartal() {
+    }public int getJaartal() {
         return jaartal;
-    }
-
-    public void setJaartal(String jaartal) {
-        this.jaartal = jaartal;
-    }
-
-    public String getAuteur() {
+    }public String getAuteur() {
         return auteur;
-    }
-
-    public void setAuteur(String auteur) {
+    }public double getBeoordeling() {
+        return beoordeling;
+    }public String getType() {
+        return type;
+    }public void setId(int id) {
+        this.id = id;
+    }public void setNaam(String naam) {
+        this.naam = naam;
+    }public void setJaartal(int jaartal) {
+        this.jaartal = jaartal;
+    }public void setAuteur(String auteur) {
         this.auteur = auteur;
+    }public void setBeoordeling(double beoordeling) {
+        this.beoordeling = beoordeling;
+    }public void setType(String type) {
+        this.type = type;
     }
 
     @Override
