@@ -15,7 +15,7 @@ public class Main {
 
                 switch (mainMenuVraag) {
                     case 1:
-                        System.out.println("Je hebt gekozen voor Game Review 2Toevoegen.");
+                        System.out.println("Je hebt gekozen voor Game Review Toevoegen.");
                         menu.addMenu();
                         break;
                     case 2:

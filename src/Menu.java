@@ -1,3 +1,5 @@
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Menu {
@@ -23,7 +25,6 @@ public class Menu {
 
         return scanner.nextInt();
     }
-
     public void addMenu() {
         System.out.println("*******************************");
         System.out.println("1. Nieuwe game review toevoegen");
@@ -104,17 +105,31 @@ public class Menu {
 
         switch (orderMenuChoice) {
             case 1:
-
+                Collections.sort(operate.getGameList(), new OrderByBeoordeling());
+                operate.showAll();
                 break;
             case 2:
-
+                Collections.sort(operate.getGameList(), new OrderByType());
+                operate.showAll();
                 break;
             case 3:
-                // Terug naar hoofdmenu
+                mainMenu();
                 break;
             default:
                 System.out.println("Ongeldige keuze. Probeer opnieuw.");
                 break;
+        }
+    }
+    static class OrderByBeoordeling implements Comparator<Game> {
+        @Override
+        public int compare(Game o1, Game o2) {
+            return Double.compare(o1.getPrice(), o2.getPrice());
+        }
+    }
+    static class OrderByType implements Comparator<Game> {
+        @Override
+        public int compare(Game o1, Game o2) {
+            return o1.getPlatform().compareTo(o2.getPlatform());
         }
     }
 

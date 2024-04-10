@@ -14,6 +14,9 @@ public class Operate {
         this.csvWriter = new CSVWriter();
         this.scanner = new Scanner(System.in);
     }
+    public List<Game> getGameList() {
+        return gameList;
+    }
 
     public void addNewGameReview() {
         System.out.println("Over welk spel wil je een review plaatsen:");

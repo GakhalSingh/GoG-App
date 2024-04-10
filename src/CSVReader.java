@@ -8,7 +8,7 @@ public class CSVReader {
     public List<Game> readGames() {
         List<Game> list = new ArrayList<>();
         try {
-            File file = new File("GoG-App1\\games.csv");
+            File file = new File("GoG-App1/games.csv");
             Scanner scanner = new Scanner(file);
 
             if (scanner.hasNextLine()) {
