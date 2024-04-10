@@ -1,15 +1,20 @@
 public class Game {
     private int id;
-    private String naam;
-    private String jaartal;
-    private String auteur;
+    private String gameTitle;
+    private String platform;
+    private int releaseYear;
+    private boolean onSale;
+    private double price;
 
-    public Game(String naam, String jaartal, String auteur) {
-
-        this.naam = naam;
-        this.jaartal = jaartal;
-        this.auteur = auteur;
+    public Game(int id, String gameTitle, String platform, int releaseYear, boolean onSale, double price) {
+        this.id = id;
+        this.gameTitle = gameTitle;
+        this.platform = platform;
+        this.releaseYear = releaseYear;
+        this.onSale = onSale;
+        this.price = price;
     }
+
     public int getId() {
         return id;
     }
@@ -18,37 +23,55 @@ public class Game {
         this.id = id;
     }
 
-    public String getNaam() {
-        return naam;
+    public String getGameTitle() {
+        return gameTitle;
     }
 
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public void setGameTitle(String gameTitle) {
+        this.gameTitle = gameTitle;
     }
 
-    public String getJaartal() {
-        return jaartal;
+    public String getPlatform() {
+        return platform;
     }
 
-    public void setJaartal(String jaartal) {
-        this.jaartal = jaartal;
+    public void setPlatform(String platform) {
+        this.platform = platform;
     }
 
-    public String getAuteur() {
-        return auteur;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public boolean isOnSale() {
+        return onSale;
+    }
+
+    public void setOnSale(boolean onSale) {
+        this.onSale = onSale;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
-        sb.append("ID").append(this.id).append("#").append("\t");
-        sb.append("Naam: ").append(this.naam).append("\t\t");
-        sb.append("Jaartal: ").append(this.jaartal).append("\t\t");
-        sb.append("Auteur: ").append(this.auteur).append("\t\t");
-        return sb.toString();
+        return "Game{" +
+                "id=" + id +
+                ", gameTitle='" + gameTitle + '\'' +
+                ", platform='" + platform + '\'' +
+                ", releaseYear=" + releaseYear +
+                ", onSale=" + onSale +
+                ", price=" + price +
+                '}';
     }
 }
