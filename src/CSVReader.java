@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CSVReader {
-    public List<Game> readGames() {
+    public static List<Game> readGames() {
         List<Game> list = new ArrayList<>();
         try {
             File file = new File("GoG-App/games.csv");
