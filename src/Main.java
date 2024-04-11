@@ -26,7 +26,7 @@ public class Main {
                         menu.orderMenu();
                         break;
                     case 4:
-                        System.out.println("Je hebt gekozen voor Sales.");
+                        System.out.println("Games in de uitverkoop:");
                         menu.salesMenu();
                         break;
                     case 5:
