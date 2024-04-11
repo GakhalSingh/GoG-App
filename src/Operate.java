@@ -9,6 +9,7 @@ public class Operate {
 
     public Operate() {
         this.gameList = CSVReader.readGames();
+        this.reviewList = CSVReader.readReviews();
         this.csvReader = new CSVReader();
         this.csvWriter = new CSVWriter();
         this.scanner = new Scanner(System.in);
@@ -22,6 +23,7 @@ public class Operate {
         String gameName = scanner.nextLine();
         Game game = findGameByName(gameName);
         if (game != null) {
+            int reviewID = getNextReviewID();
             System.out.println("Geef je gebruikersnaam:");
             String username = scanner.nextLine();
             System.out.println("Geef de gameplay score (1-10):");
@@ -34,7 +36,14 @@ public class Operate {
             System.out.println("Voeg een opmerking toe:");
             String comment = scanner.nextLine();
 
-            Review review = new Review(getNextReviewID(), game.getId(), username, gameplayScore, graphicsScore, storylineScore, comment);
+            System.out.println("Wil je nog meedoen met onze vragenlijst (Y/N)");
+            String response = scanner.nextLine();
+            if (response.equalsIgnoreCase("Y")) {
+                Enquete enquete = new Enquete(reviewID);
+                enquete.startEnquete();
+
+            }
+            Review review = new Review(reviewID, game.getId(), username, gameplayScore, graphicsScore, storylineScore, comment);
             reviewList.add(review);
             csvWriter.createReview(review);
             System.out.println("Review succesvol toegevoegd!");
@@ -44,10 +53,9 @@ public class Operate {
     }
 
     public void showAllReviews() {
-        List<Review> reviews = csvReader.readReviews();
-        System.out.println(reviews);
-        if (!reviews.isEmpty()) {
-            for (Review review : reviews) {
+        System.out.println(reviewList);
+        if (!reviewList.isEmpty()) {
+            for (Review review : reviewList) {
                 System.out.println(review);
             }
         } else {

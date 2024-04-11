@@ -1,4 +1,4 @@
-ID;GameTitle;Platform;ReleaseYear;OnSale;Price
+PID;GameTitle;Platform;ReleaseYear;OnSale;Price
 1;Super Mario Bros.;NES;1985;false;9.99;
 2;The Legend of Zelda;NES;1986;false;9.99;
 3;Pac-Man;Arcade;1980;false;9.99;
