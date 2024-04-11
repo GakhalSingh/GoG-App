@@ -7,7 +7,6 @@ public class Main {
         Menu menu = new Menu(operate);
         CSVReader csvReader = new CSVReader();
         CSVWriter csvWriter = new CSVWriter();
-        Regex regex = new Regex();
         try {
             while (true) {
                 menu.mainMenu();
