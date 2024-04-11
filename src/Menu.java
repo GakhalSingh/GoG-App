@@ -102,7 +102,8 @@ public class Menu {
         System.out.println("******************************");
         System.out.println("1. Gerangschikt op Gemiddele Scroe");
         System.out.println("2. Gerangschikt op ReleaseYear");
-        System.out.println("3. Terug");
+        System.out.println ("3. Gerangschikt op Platform");
+        System.out.println ("4. Terug");
         System.out.println("******************************");
         System.out.print  ("   Kies een optie: ");
         int orderMenuChoice = scanner.nextInt();
@@ -110,13 +111,16 @@ public class Menu {
         switch (orderMenuChoice) {
             case 1:
                 operate.ratingByavgRating();
-                operate.showAll();
+
                 break;
             case 2:
                 operate.ratingByReleaseYear ();
-                operate.showAll();
+
                 break;
             case 3:
+                operate.ratingByPlatform();
+                break;
+            case 4:
                 mainMenu();
                 break;
             default:
