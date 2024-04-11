@@ -5,6 +5,7 @@ public class Game {
     private int releaseYear;
     private boolean onSale;
     private double price;
+    private double avgRating;
 
     public Game(int id, String gameTitle, String platform, int releaseYear, boolean onSale, double price) {
         this.id = id;
@@ -13,6 +14,7 @@ public class Game {
         this.releaseYear = releaseYear;
         this.onSale = onSale;
         this.price = price;
+        setAvgRating();
     }
 
     public int getId() {
@@ -61,6 +63,23 @@ public class Game {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+    public void setAvgRating(){
+        CSVReader reader = new CSVReader();
+        int reviewcount = 0;
+        double avgRating = 0;
+        for (Review review : reader.readReviews()){
+            if (review.getGameID() == this.id){
+                avgRating += review.getAvgRating();
+                reviewcount++;
+            }
+        }
+        if (reviewcount != 0){
+            this.avgRating = avgRating / reviewcount;
+        }
+    }
+    public double getAvgRating(){
+        return avgRating;
     }
 
     @Override

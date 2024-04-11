@@ -8,7 +8,7 @@ public class CSVReader {
     public static List<Game> readGames() {
         List<Game> list = new ArrayList<>();
         try {
-            File file = new File("GoG-App/games.csv");
+            File file = new File("games.csv");
             Scanner scanner = new Scanner(file);
 
             if (scanner.hasNextLine()) {
@@ -36,7 +36,7 @@ public class CSVReader {
             scanner.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println("GoG-App/CSV bestand niet gevonden 😔");
+            System.out.println("CSV bestand niet gevonden 😔");
         }
         return list;
     }
@@ -44,7 +44,7 @@ public class CSVReader {
     public List<Review> readReviews() {
         List<Review> reviews = new ArrayList<>();
         try {
-            File file = new File("GoG-App/reviews.csv");
+            File file = new File("reviews.csv");
             Scanner scanner = new Scanner(file);
 
             if (scanner.hasNextLine()) {

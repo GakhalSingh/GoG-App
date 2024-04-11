@@ -34,15 +34,15 @@ public class CSVWriter {
 
     // afblijven - jin
     public void createReview(Review review) {
-        try (FileWriter fileWriter = new FileWriter("GoG-App/reviews.csv", true);
+        try (FileWriter fileWriter = new FileWriter("reviews.csv", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
 
             int reviewID = review.getReviewID();
             int gameID = review.getGameID();
             String username = review.getUsername();
-            int gameplayScore = review.getGameplayScore();
-            int graphicsScore = review.getGraphicsScore();
-            int storylineScore = review.getStorylineScore();
+            double gameplayScore = review.getGameplayScore();
+            double graphicsScore = review.getGraphicsScore();
+            double storylineScore = review.getStorylineScore();
 
             String comment = review.getComment();
 
@@ -56,7 +56,7 @@ public class CSVWriter {
     public List<Review> readReviewsForGame(int gameID) {
         List<Review> gameReviews = new ArrayList<>();
         try {
-            File file = new File("GoG-App/reviews.csv");
+            File file = new File("reviews.csv");
             Scanner scanner = new Scanner(file);
 
             if (scanner.hasNextLine()) {
