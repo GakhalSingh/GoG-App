@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Enquete {
-    private int reviewID;
-    private ArrayList<String> questions;
+    private final int reviewID;
+    private final ArrayList<String> questions;
     private ArrayList<String> answers;
 
     public Enquete(int reviewID) {
@@ -21,6 +21,4 @@ public class Enquete {
         System.out.println("Bedankt voor het invullen van de enquete!");
         CSVWriter.writeEnquete(reviewID,answers);
     }
-
-
 }

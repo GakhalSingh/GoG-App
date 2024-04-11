@@ -94,7 +94,7 @@ public class CSVWriter {
             for (String answer : answers) {
                 writer.print(answer + ";");
             }
-            writer.print(System.lineSeparator());
+            writer.println("");
             System.out.println("Etiketten succesvol geschreven naar enqueteAntwoorden.csv");
         } catch (IOException e) {
             System.out.println("Fout bij het schrijven naar CSV-bestand: " + e.getMessage());

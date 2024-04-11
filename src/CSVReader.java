@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -82,9 +83,7 @@ public class CSVReader {
             if (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(";");
-                for (String part : parts) {
-                    enqueteQuestions.add(part);
-                }
+                enqueteQuestions.addAll(Arrays.asList(parts));
             }
             scanner.close();
         } catch (FileNotFoundException e) {
