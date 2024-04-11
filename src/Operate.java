@@ -150,9 +150,10 @@ public class Operate {
                 return Double.compare (o2.getAvgRating(), o1.getAvgRating());
             }
         });
-        System.out.println ("Rank op basis van Eind Score");
+        System.out.println ("Rank op basis van Eind Score: ");
         for (Game game : gameList){
-            System.out.println(game.getAvgRating() +"\t"+ game.getGameTitle());
+            System.out.println(String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
+
 
         }
 
@@ -165,9 +166,9 @@ public class Operate {
                 return Integer.compare(g1.getReleaseYear(), g2.getReleaseYear());
             }
         });
-        System.out.println ("Rank op basis van ReleaseYear");
+        System.out.println ("Rank op basis van ReleaseYear: ");
         for (Game game : gameList){
-            System.out.println(game.getReleaseYear() +"\t"+ game.getGameTitle());
+            System.out.println(game.getReleaseYear() +"\tGameTitel: "+ game.getGameTitle());
 
         }
     }
@@ -179,9 +180,9 @@ public class Operate {
                 return o1.getPlatform().compareTo(o2.getPlatform());
             }
         });
-        System.out.println ("Rank op basis van Platform");
+        System.out.println ("Rank op basis van Platform: ");
         for (Game game : gameList){
-            System.out.println(game.getPlatform() +"\t"+ game.getGameTitle());
+            System.out.println(game.getPlatform() +"\tGameTitel:"+ game.getGameTitle());
 
         }
     }
