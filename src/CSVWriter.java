@@ -35,10 +35,13 @@ public class CSVWriter {
             int reviewID = review.getReviewID();
             int gameID = review.getGameID();
             String username = review.getUsername();
-            int rating = review.getRating();
+            int gameplayScore = review.getGameplayScore();
+            int graphicsScore = review.getGraphicsScore();
+            int storylineScore = review.getStorylineScore();
+
             String comment = review.getComment();
 
-            printWriter.println(reviewID + ";" + gameID + ";" + username + ";" + rating + ";" + comment);
+            printWriter.println(reviewID + ";" + gameID + ";" + username + ";" + gameplayScore + ";" + graphicsScore + ";" + storylineScore + ";" +comment);
             System.out.println("Review toegevoegd: " + review);
         } catch (IOException e) {
             System.out.println("Fout bij het schrijven van de review: " + e.getMessage());
@@ -51,7 +54,6 @@ public class CSVWriter {
             File file = new File("GoG-App/reviews.csv");
             Scanner scanner = new Scanner(file);
 
-            // Skip the header line
             if (scanner.hasNextLine()) {
                 scanner.nextLine();
             }
@@ -59,15 +61,17 @@ public class CSVWriter {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(";");
-                if (parts.length == 5) {
+                if (parts.length == 7) {
                     int reviewID = Integer.parseInt(parts[0]);
                     int gameIDFromCSV = Integer.parseInt(parts[1]);
                     if (gameID == gameIDFromCSV) {
                         String username = parts[2];
-                        int rating = Integer.parseInt(parts[3]);
-                        String comment = parts[4];
+                        String comment = parts[3];
+                        int rating = Integer.parseInt(parts[4]);
+                        int rating2 = Integer.parseInt(parts[5]);
+                        int rating3 = Integer.parseInt(parts[6]);
 
-                        Review review = new Review(reviewID, gameID, username, rating, comment);
+                        Review review = new Review(reviewID, gameID, username, rating, rating2, rating3, comment);
                         gameReviews.add(review);
                     }
                 }

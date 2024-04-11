@@ -36,7 +36,7 @@ public class CSVReader {
             scanner.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println("CSV bestand niet gevonden 😔");
+            System.out.println("GoG-App/CSV bestand niet gevonden 😔");
         }
         return list;
     }
@@ -47,7 +47,6 @@ public class CSVReader {
             File file = new File("GoG-App/reviews.csv");
             Scanner scanner = new Scanner(file);
 
-            // Skip the header line
             if (scanner.hasNextLine()) {
                 scanner.nextLine();
             }
@@ -55,38 +54,22 @@ public class CSVReader {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(";");
-                if (parts.length == 5) {
+                if (parts.length == 7) {
                     int reviewID = Integer.parseInt(parts[0]);
                     int gameID = Integer.parseInt(parts[1]);
                     String username = parts[2];
-                    int rating = Integer.parseInt(parts[3]);
-                    String comment = parts[4];
-
-                    Review review = new Review(reviewID, gameID, username, rating, comment);
+                    String comment = parts[3];
+                    int gameplayScore = Integer.parseInt(parts[4]);
+                    int graphicsScore = Integer.parseInt(parts[5]);
+                    int storylineScore = Integer.parseInt(parts[6]);
+                    Review review = new Review(reviewID, gameID, username, gameplayScore, graphicsScore, storylineScore, comment);
                     reviews.add(review);
-                } else {
-                    System.out.println("Ongeldige rij: " + line);
                 }
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Bestand niet gevonden 🥲");
+            System.out.println("Bestand niet gevonden: " + e.getMessage());
         }
         return reviews;
-    }
-
-    // dit is om te testen delete nadat we klaar zijn
-    public static void main(String[] args) {
-        CSVReader csvReader = new CSVReader();
-        List<Game> games = csvReader.readGames();
-        List<Review> reviews = csvReader.readReviews();
-
-        for (Game game : games) {
-            System.out.println(game);
-        }
-
-        for (Review review : reviews) {
-            System.out.println(review);
-        }
     }
 }

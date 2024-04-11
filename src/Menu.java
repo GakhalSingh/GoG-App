@@ -37,7 +37,7 @@ public class Menu {
 
         switch (addMenuChoice) {
             case 1:
-                operate.addNewGameReview();
+                operate.addNewReview();
                 break;
             case 2:
                 System.out.println("Alle reviews van games:");

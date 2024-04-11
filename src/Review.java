@@ -2,14 +2,18 @@ public class Review {
     private int reviewID;
     private int gameID;
     private String username;
-    private int rating;
+    private int gameplayScore;
+    private int graphicsScore;
+    private int storylineScore;
     private String comment;
 
-    public Review(int reviewID, int gameID, String username, int rating, String comment) {
+    public Review(int reviewID, int gameID, String username, int gameplayScore, int graphicsScore, int storylineScore, String comment) {
         this.reviewID = reviewID;
         this.gameID = gameID;
         this.username = username;
-        this.rating = rating;
+        this.gameplayScore = gameplayScore;
+        this.graphicsScore = graphicsScore;
+        this.storylineScore = storylineScore;
         this.comment = comment;
     }
 
@@ -37,12 +41,28 @@ public class Review {
         this.username = username;
     }
 
-    public int getRating() {
-        return rating;
+    public int getGameplayScore() {
+        return gameplayScore;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setGameplayScore(int gameplayScore) {
+        this.gameplayScore = gameplayScore;
+    }
+
+    public int getGraphicsScore() {
+        return graphicsScore;
+    }
+
+    public void setGraphicsScore(int graphicsScore) {
+        this.graphicsScore = graphicsScore;
+    }
+
+    public int getStorylineScore() {
+        return storylineScore;
+    }
+
+    public void setStorylineScore(int storylineScore) {
+        this.storylineScore = storylineScore;
     }
 
     public String getComment() {
@@ -55,12 +75,12 @@ public class Review {
 
     @Override
     public String toString() {
-        return "Review{" +
-                "reviewID=" + reviewID +
-                ", gameID=" + gameID +
-                ", username='" + username + '\'' +
-                ", rating=" + rating +
-                ", comment='" + comment + '\'' +
-                '}';
+        return "Review ID: " + reviewID + "\n" +
+                "Game ID: " + gameID + "\n" +
+                "Gebruikersnaam: " + username + "\n" +
+                "Gameplay Score: " + gameplayScore + "\n" +
+                "Graphics Score: " + graphicsScore + "\n" +
+                "Storyline Score: " + storylineScore + "\n" +
+                "Opmerking: " + comment + "\n";
     }
 }
