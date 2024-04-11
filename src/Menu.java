@@ -100,8 +100,8 @@ public class Menu {
 
     public void orderMenu() {
         System.out.println("******************************");
-        System.out.println("1. Gerangschikt op beoordeling");
-        System.out.println("2. Gerangschikt op type");
+        System.out.println("1. Gerangschikt op Gemiddele Scroe");
+        System.out.println("2. Gerangschikt op ReleaseYear");
         System.out.println("3. Terug");
         System.out.println("******************************");
         System.out.print  ("   Kies een optie: ");
@@ -109,11 +109,11 @@ public class Menu {
 
         switch (orderMenuChoice) {
             case 1:
-                Collections.sort(operate.getGameList(), new OrderByBeoordeling());
+                operate.ratingByavgRating();
                 operate.showAll();
                 break;
             case 2:
-                Collections.sort(operate.getGameList(), new OrderByType());
+                operate.ratingByReleaseYear ();
                 operate.showAll();
                 break;
             case 3:
@@ -122,18 +122,6 @@ public class Menu {
             default:
                 System.out.println("Ongeldige keuze. Probeer opnieuw.");
                 break;
-        }
-    }
-    static class OrderByBeoordeling implements Comparator<Game> {
-        @Override
-        public int compare(Game o1, Game o2) {
-            return Double.compare(o1.getPrice(), o2.getPrice());
-        }
-    }
-    static class OrderByType implements Comparator<Game> {
-        @Override
-        public int compare(Game o1, Game o2) {
-            return o1.getPlatform().compareTo(o2.getPlatform());
         }
     }
 
