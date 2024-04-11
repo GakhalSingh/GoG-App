@@ -87,4 +87,17 @@ public class CSVWriter {
         }
         return gameReviews;
     }
+
+    public static void writeEnquete(List<String> answers) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("enqueteAntwoorden.csv"))) {
+            for (String answer : answers) {
+                writer.print(answer + ",");
+            }
+            writer.print(System.lineSeparator());
+            System.out.println("Etiketten succesvol geschreven naar enqueteAntwoorden.csv");
+        } catch (IOException e) {
+            System.out.println("Fout bij het schrijven naar CSV-bestand: " + e.getMessage());
+        }
+    }
+
 }

@@ -41,7 +41,7 @@ public class CSVReader {
         return list;
     }
 
-    public List<Review> readReviews() {
+    public static List<Review> readReviews() {
         List<Review> reviews = new ArrayList<>();
         try {
             File file = new File("reviews.csv");
@@ -71,5 +71,25 @@ public class CSVReader {
             System.out.println("Bestand niet gevonden: " + e.getMessage());
         }
         return reviews;
+    }
+
+    public static ArrayList<String> getEnqueteQuestions(){
+        ArrayList<String> enqueteQuestions = new ArrayList<>();
+        try {
+            File file = new File("enquete.csv");
+            Scanner scanner = new Scanner(file);
+
+            if (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(";");
+                for (String part : parts) {
+                    enqueteQuestions.add(part);
+                }
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Bestand niet gevonden: " + e.getMessage());
+        }
+        return enqueteQuestions;
     }
 }
