@@ -129,7 +129,18 @@ public class Menu {
                 mainMenu();
                 break;
             default:
-                System.out.println("Ongeldige keuze. Probeer opnieuw.");
+                System.out.println("dat was geen optie maat");
+                System.out.println("░░░░░░░█▐▓▓░████▄▄▄█▀▄▓▓▓▌█");
+                System.out.println("░░░░░▄█▌▀▄▓▓▄▄▄▄▀▀▀▄▓▓▓▓▓▌█");
+                System.out.println("░░░▄█▀▀▄▓█▓▓▓▓▓▓▓▓▓▓▓▓▀░▓▌█");
+                System.out.println("░░█▀▄▓▓▓███▓▓▓███▓▓▓▄░░▄▓▐█▌");
+                System.out.println("░█▌▓▓▓▀▀▓▓▓▓███▓▓▓▓▓▓▓▄▀▓▓▐█");
+                System.out.println("▐█▐██▐░▄▓▓▓▓▓▀▄░▀▓▓▓▓▓▓▓▓▓▌█▌");
+                System.out.println("█▌███▓▓▓▓▓▓▓▓▐░░▄▓▓███▓▓▓▄▀▐█");
+                System.out.println("█▐█▓▀░░▀▓▓▓▓▓▓▓▓▓██████▓▓▓▓▐█");
+                System.out.println("▌▓▄▌▀░▀░▐▀█▄▓▓██████████▓▓▓▌█▌");
+                System.out.println("▌▓▓▓▄▄▀▀▓▓▓▀▓▓▓▓▓▓▓▓█▓█▓█▓▓▌█▌");
+                System.out.println("█▐▓▓▓▓▓▓▄▄▄▓▓▓▓▓▓█▓█▓█▓█▓▓▓▐█");
                 break;
         }
     }
@@ -149,7 +160,7 @@ public class Menu {
 
     public void salesMenu() {
         System.out.println("******************************");
-        // Implementeer logica voor het tonen van het salesmenu
+        // Implementeer logica voor het tonen van het salesmenu - isg g
     }
 
     public void closeScanner() {
