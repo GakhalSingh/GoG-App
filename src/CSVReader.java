@@ -68,7 +68,7 @@ public class CSVReader {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Bestand niet gevonden: " + e.getMessage());
+            System.out.println("Bestand niet gevonden 🥲");
         }
         return reviews;
     }

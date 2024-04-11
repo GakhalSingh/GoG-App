@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Operate {
     private List<Game> gameList;
@@ -24,11 +26,11 @@ public class Operate {
         if (game != null) {
             System.out.println("Geef je gebruikersnaam:");
             String username = scanner.nextLine();
-            System.out.println("Geef de gameplay score (1-10):");
+            System.out.println("Geef de gameplay score (1-5):");
             int gameplayScore = scanner.nextInt();
-            System.out.println("Geef de graphics score (1-10):");
+            System.out.println("Geef de graphics score (1-5):");
             int graphicsScore = scanner.nextInt();
-            System.out.println("Geef de storyline score (1-10):");
+            System.out.println("Geef de storyline score (1-5):");
             int storylineScore = scanner.nextInt();
             scanner.nextLine();
             System.out.println("Voeg een opmerking toe:");
@@ -143,18 +145,7 @@ public class Operate {
         }
         return maxID + 1;
     }
-    public void ratingByavgRating() {
 
-    }
-
-    public void ratingByReleaseYear (){
-        Collections.sort(this.gameList, new Comparator<Game>() {
-            @Override
-            public int compare(Game o1, Game o2) {
-                return o1.getReleaseYear() - o2.getReleaseYear();
-            }
-        });
-    }
     public void showAll() {
         System.out.println("Alle games in de lijst:");
         for (Game game : gameList) {

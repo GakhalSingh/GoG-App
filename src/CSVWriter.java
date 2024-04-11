@@ -44,7 +44,7 @@ public class CSVWriter {
             printWriter.println(reviewID + ";" + gameID + ";" + username + ";" + gameplayScore + ";" + graphicsScore + ";" + storylineScore + ";" +comment);
             System.out.println("Review toegevoegd: " + review);
         } catch (IOException e) {
-            System.out.println("Fout bij het schrijven van de review: " + e.getMessage());
+            System.out.println("Fout bij het schrijven van de review 💩");
         }
     }
 
@@ -78,7 +78,7 @@ public class CSVWriter {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Bestand niet gevonden: " + e.getMessage());
+            System.out.println("Bestand niet gevonden 😠");
         }
         return gameReviews;
     }
