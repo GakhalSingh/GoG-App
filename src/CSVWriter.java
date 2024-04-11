@@ -40,9 +40,9 @@ public class CSVWriter {
             int reviewID = review.getReviewID();
             int gameID = review.getGameID();
             String username = review.getUsername();
-            int gameplayScore = review.getGameplayScore();
-            int graphicsScore = review.getGraphicsScore();
-            int storylineScore = review.getStorylineScore();
+            double gameplayScore = review.getGameplayScore();
+            double graphicsScore = review.getGraphicsScore();
+            double storylineScore = review.getStorylineScore();
 
             String comment = review.getComment();
 
