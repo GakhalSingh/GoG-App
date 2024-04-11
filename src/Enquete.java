@@ -11,6 +11,19 @@ public class Enquete {
         this.questions = CSVReader.getEnqueteQuestions();
         this.answers = new ArrayList<>();
     }
+    public int getReviewID(){
+        return reviewID;
+    }
+    public ArrayList<String> getQuestions(){
+        return questions;
+    }
+    public ArrayList<String> getAnswers(){
+        return answers;
+    }
+    public void setAnswers(ArrayList<String> answers){
+        this.answers = answers;
+    }
+
     public void startEnquete() {
         Scanner scanner = new Scanner(System.in);
         for (String question : questions) {
@@ -21,4 +34,5 @@ public class Enquete {
         System.out.println("Bedankt voor het invullen van de enquete!");
         CSVWriter.writeEnquete(reviewID,answers);
     }
+
 }

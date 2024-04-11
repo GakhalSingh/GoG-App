@@ -74,7 +74,7 @@ public class CSVReader {
         return reviews;
     }
 
-    public static ArrayList<String> getEnqueteQuestions(){
+    public static ArrayList<String> getEnqueteQuestions() {
         ArrayList<String> enqueteQuestions = new ArrayList<>();
         try {
             File file = new File("enqueteVragen.txt");
@@ -90,5 +90,44 @@ public class CSVReader {
             System.out.println("Bestand niet gevonden: " + e.getMessage());
         }
         return enqueteQuestions;
+    }
+
+    public static ArrayList<Enquete> getEnqueteResponses() {
+        ArrayList<Enquete> enqueteResponses = new ArrayList<>();
+        try {
+            File file = new File("enquetes.csv");
+            Scanner scanner = new Scanner(file);
+
+            if (scanner.hasNextLine()) {
+                scanner.nextLine();
+            }
+            ArrayList<Enquete> enquetes = new ArrayList<>();
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(";");
+                if (parts.length == 5) {
+                    ArrayList<String> answers = new ArrayList<>();
+                    int reviewID = Integer.parseInt(parts[0]);
+                    String Response1 = parts[1];
+                    answers.add(Response1);
+                    String Response2 = parts[2];
+                    answers.add(Response2);
+                    String Response3 = parts[3];
+                    answers.add(Response3);
+                    String Response4 = parts[4];
+                    answers.add(Response4);
+
+                    Enquete enquete = new Enquete(reviewID);
+                    enquete.setAnswers(answers);
+                    enqueteResponses.add(enquete);
+                }
+            }
+
+            scanner.close();
+
+            } catch(FileNotFoundException e){
+                System.out.println("Bestand niet gevonden: " + e.getMessage());
+            }
+            return enqueteResponses;
     }
 }

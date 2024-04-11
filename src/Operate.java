@@ -5,12 +5,14 @@ import java.util.*;
 public class Operate {
     private List<Game> gameList;
     private List<Review> reviewList;
+    private List<Enquete> enqueteList;
     private CSVWriter csvWriter;
     private Scanner scanner;
 
     public Operate() {
         this.gameList = CSVReader.readGames();
         this.reviewList = CSVReader.readReviews();
+        this.enqueteList = CSVReader.getEnqueteResponses();
         this.csvWriter = new CSVWriter();
         this.scanner = new Scanner(System.in);
     }
@@ -62,8 +64,32 @@ public class Operate {
             for (Review review : reviewList) {
                 System.out.println(review);
             }
+            //TODO een andere versie van displayEnquete maken die dit geeft als er geen parameter is
+            System.out.println("Vul een review ID in om de bijbehorende enquete te lezen, " +
+                    "toets 0 in om terug te gaan naar het hoofdmenu.");
+            int enqueteChoice = scanner.nextInt();
+            System.out.println();
+            if (enqueteChoice == 0){
+                return;
+            }
+            displayEnquete(enqueteChoice);
+
         } else {
             System.out.println("Er zijn nog geen reviews toegevoegd.");
+        }
+    }
+
+    private void displayEnquete(int enqueteChoice) {
+        for (Enquete enquete : enqueteList){
+            if (enquete.getReviewID() == enqueteChoice){
+                int counter = 0;
+                for (String question : enquete.getQuestions()){
+                    System.out.println(question);
+                    System.out.println(enquete.getAnswers().get(counter));
+                    System.out.println(String.format("%35s"," ").replace(" ", "="));
+                    counter++;
+                }
+            }
         }
     }
 

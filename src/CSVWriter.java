@@ -89,13 +89,13 @@ public class CSVWriter {
     }
 
     public static void writeEnquete(int reviewwID,List<String> answers) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("enqueteAntwoorden.csv",true))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("enquetes.csv",true))) {
             writer.print(reviewwID+";");
             for (String answer : answers) {
                 writer.print(answer + ";");
             }
             writer.println("");
-            System.out.println("Etiketten succesvol geschreven naar enqueteAntwoorden.csv");
+            System.out.println("Etiketten succesvol geschreven naar enquetes.csv");
         } catch (IOException e) {
             System.out.println("Fout bij het schrijven naar CSV-bestand: " + e.getMessage());
         }
