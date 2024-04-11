@@ -100,26 +100,14 @@ public class CSVWriter {
         }
     }
 
-    public static void writeUser (List<User> users, String filePath) {
-        File file = new File(filePath);
-
-        File parenDir = file.getParentFile();
-        if(!parenDir.exists()){
-            parenDir.mkdirs();
-        }
-
-        boolean writeHeader = !(!file.exists() && file.length()>0);
-
-        try(FileWriter writer = new FileWriter(filePath,true)){
-            if(writeHeader){
-                writer.append("UserId,UserNaam,Paasword");
-            }
-            for (User user: users){
-                writer.append(String.valueOf(user.getUserId())).append(",")
-                        .append(user.getUsername()).append(",")
-                        .append(user.getPassword());
-            }
-            System.out.println ("Gegenves succesvol geschreven naar: " + filePath);
+    public static void writeUser (User user) throws IOException {
+        File file = new File("user.csv");
+        file.createNewFile();
+        try(FileWriter writer = new FileWriter("user.csv",true)){
+            writer.append(user.getUsername()).append(",")
+                    .append(user.getPassword())
+                    .append(System.lineSeparator());
+            System.out.println ("Gegenves succesvol geschreven naar: " + "user.csv");
         }catch(IOException e){
             System.out.println("Fout bij het schrijven naar csv-bestand: " + e.getMessage());
         }
