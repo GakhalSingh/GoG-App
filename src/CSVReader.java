@@ -23,7 +23,7 @@ public class CSVReader {
                     String gameTitle = parts[1];
                     String platform = parts[2];
                     int releaseYear = Integer.parseInt(parts[3]);
-                    boolean onSale = Boolean.parseBoolean(parts[4]);
+                    int onSale = Integer.parseInt(parts[4]);
                     double price = Double.parseDouble(parts[5]);
 
                     Game game = new Game(id, gameTitle, platform, releaseYear, onSale, price);

@@ -120,14 +120,14 @@ public class Operate {
         }
     }
 
-    public void searchBySale(boolean gameOnSale, String gameName) {
+    public void searchBySale(int gameOnSale, String gameName) {
         boolean found = false;
         System.out.println("Games in de uitverkoop:");
 
         for (Game game : gameList) {
-            if (game.isOnSale() == gameOnSale) {
+            if (game.isOnSale() >= 1 && game.isOnSale() <= gameOnSale) {
                 if (gameName == null || gameName.isEmpty() || game.getGameTitle().equalsIgnoreCase(gameName)) {
-                    System.out.println(game.getGameTitle()); // Toon alleen de naam van de game in de uitverkoop
+                    System.out.println(game.isOnSale() + "% " + game.getGameTitle());
                     found = true;
                 }
             }
@@ -135,9 +135,9 @@ public class Operate {
 
         if (!found) {
             if (gameName != null && !gameName.isEmpty()) {
-                System.out.println("Geen games in de uitverkoop met de naam: " + gameName);
+                System.out.println("Geen games in de uitverkoop met de naam: " + gameName + " en kortingspercentage tot " + gameOnSale + "%");
             } else {
-                System.out.println("Geen games momenteel in de uitverkoop.");
+                System.out.println("Geen games momenteel in de uitverkoop met kortingspercentage tot " + gameOnSale + "%");
             }
         }
     }

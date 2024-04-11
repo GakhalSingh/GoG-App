@@ -133,7 +133,7 @@ public class Menu {
 
     public void salesMenu() {
         System.out.println("******************************");
-        operate.searchBySale(true, null);
+        operate.searchBySale( 100,null);
         System.out.println("******************************");
 
     }
