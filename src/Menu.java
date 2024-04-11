@@ -130,9 +130,12 @@ public class Menu {
     }
 
 
+
     public void salesMenu() {
         System.out.println("******************************");
-        // Implementeer logica voor het tonen van het salesmenu
+        operate.searchBySale(true, null);
+        System.out.println("******************************");
+
     }
 
     public void closeScanner() {

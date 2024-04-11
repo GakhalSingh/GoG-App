@@ -119,6 +119,29 @@ public class Operate {
             System.out.println("Geen games gevonden uit het jaar " + gameJaar);
         }
     }
+
+    public void searchBySale(boolean gameOnSale, String gameName) {
+        boolean found = false;
+        System.out.println("Games in de uitverkoop:");
+
+        for (Game game : gameList) {
+            if (game.isOnSale() == gameOnSale) {
+                if (gameName == null || gameName.isEmpty() || game.getGameTitle().equalsIgnoreCase(gameName)) {
+                    System.out.println(game.getGameTitle()); // Toon alleen de naam van de game in de uitverkoop
+                    found = true;
+                }
+            }
+        }
+
+        if (!found) {
+            if (gameName != null && !gameName.isEmpty()) {
+                System.out.println("Geen games in de uitverkoop met de naam: " + gameName);
+            } else {
+                System.out.println("Geen games momenteel in de uitverkoop.");
+            }
+        }
+    }
+
     public void searchByPlatform(String platform) {
         boolean found = false;
         System.out.println("Games op het platform " + platform + ":");
