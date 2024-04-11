@@ -40,13 +40,13 @@ public class CSVWriter {
             int reviewID = review.getReviewID();
             int gameID = review.getGameID();
             String username = review.getUsername();
-            double gameplayScore = review.getGameplayScore();
-            double graphicsScore = review.getGraphicsScore();
-            double storylineScore = review.getStorylineScore();
+            int gameplayScore = review.getGameplayScore();
+            int graphicsScore = review.getGraphicsScore();
+            int storylineScore = review.getStorylineScore();
 
             String comment = review.getComment();
 
-            printWriter.println(reviewID + ";" + gameID + ";" + username + ";" + gameplayScore + ";" + graphicsScore + ";" + storylineScore + ";" +comment);
+            printWriter.println(reviewID + ";" + gameID + ";" + username + ";" +comment + ";" + gameplayScore + ";" + graphicsScore + ";" + storylineScore);
             System.out.println("Review toegevoegd: " + review);
         } catch (IOException e) {
             System.out.println("Fout bij het schrijven van de review: " + e.getMessage());

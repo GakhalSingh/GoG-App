@@ -76,7 +76,7 @@ public class CSVReader {
     public static ArrayList<String> getEnqueteQuestions(){
         ArrayList<String> enqueteQuestions = new ArrayList<>();
         try {
-            File file = new File("enquete.csv");
+            File file = new File("enqueteVragen.txt");
             Scanner scanner = new Scanner(file);
 
             if (scanner.hasNextLine()) {

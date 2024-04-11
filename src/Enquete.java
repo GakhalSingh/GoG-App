@@ -9,6 +9,7 @@ public class Enquete {
     public Enquete(int reviewID) {
         this.reviewID = reviewID;
         this.questions = CSVReader.getEnqueteQuestions();
+        this.answers = new ArrayList<>();
     }
     public void startEnquete() {
         Scanner scanner = new Scanner(System.in);
