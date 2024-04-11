@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Operate {
@@ -159,9 +160,11 @@ public class Operate {
             }
         });
         System.out.println ("Rank op basis van Eind Score: ");
+        DecimalFormat df = new DecimalFormat("#.0");
+        int rank =1;
         for (Game game : gameList){
-            System.out.println(String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
-
+            System.out.println("Rank: "+ rank + "\t\t" + String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
+            rank++;
 
         }
 
