@@ -14,6 +14,7 @@ public class Game {
         this.releaseYear = releaseYear;
         this.onSale = onSale;
         this.price = price;
+        refreshPrice();
         setAvgRating();
     }
 
@@ -61,9 +62,12 @@ public class Game {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void refreshPrice() {
+        if (onSale != 0) {
+            this.price = price - (price * (onSale*0.01));
+        }
     }
+
     public void setAvgRating(){
         CSVReader reader = new CSVReader();
         int reviewcount = 0;

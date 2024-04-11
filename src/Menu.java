@@ -132,9 +132,9 @@ public class Menu {
 
 
     public void salesMenu() {
-        System.out.println("******************************");
-        operate.searchBySale( 100,null);
-        System.out.println("******************************");
+        System.out.println("*****************************************");
+        operate.searchBySale( 100);
+        System.out.println("*****************************************");
 
     }
 
