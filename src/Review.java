@@ -2,9 +2,9 @@ public class Review {
     private int reviewID;
     private int gameID;
     private String username;
-    private double gameplayScore;
-    private double graphicsScore;
-    private double storylineScore;
+    private int gameplayScore;
+    private int graphicsScore;
+    private int storylineScore;
     private String comment;
 
     public Review(int reviewID, int gameID, String username, int gameplayScore, int graphicsScore, int storylineScore, String comment) {
@@ -41,7 +41,7 @@ public class Review {
         this.username = username;
     }
 
-    public double getGameplayScore() {
+    public int getGameplayScore() {
         return gameplayScore;
     }
 
@@ -49,7 +49,7 @@ public class Review {
         this.gameplayScore = gameplayScore;
     }
 
-    public double getGraphicsScore() {
+    public int getGraphicsScore() {
         return graphicsScore;
     }
 
@@ -57,7 +57,7 @@ public class Review {
         this.graphicsScore = graphicsScore;
     }
 
-    public double getStorylineScore() {
+    public int getStorylineScore() {
         return storylineScore;
     }
 
