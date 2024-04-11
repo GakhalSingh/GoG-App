@@ -88,10 +88,11 @@ public class CSVWriter {
         return gameReviews;
     }
 
-    public static void writeEnquete(List<String> answers) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("enqueteAntwoorden.csv"))) {
+    public static void writeEnquete(int reviewwID,List<String> answers) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("enqueteAntwoorden.csv",true))) {
+            writer.print(reviewwID+";");
             for (String answer : answers) {
-                writer.print(answer + ",");
+                writer.print(answer + ";");
             }
             writer.print(System.lineSeparator());
             System.out.println("Etiketten succesvol geschreven naar enqueteAntwoorden.csv");

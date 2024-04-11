@@ -19,7 +19,7 @@ public class Enquete {
             answers.add(answer);
         }
         System.out.println("Bedankt voor het invullen van de enquete!");
-        CSVWriter.writeEnquete(answers);
+        CSVWriter.writeEnquete(reviewID,answers);
     }
 
 
