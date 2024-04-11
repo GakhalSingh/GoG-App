@@ -144,16 +144,46 @@ public class Operate {
         return maxID + 1;
     }
     public void ratingByavgRating() {
+        Collections.sort(gameList, new Comparator<Game>() {
+            @Override
+            public int compare(Game o1, Game o2) {
+                return Double.compare (o2.getAvgRating(), o1.getAvgRating());
+            }
+        });
+        System.out.println ("Rank op basis van Eind Score");
+        for (Game game : gameList){
+            System.out.println(game.getAvgRating() +"\t"+ game.getGameTitle());
+
+        }
 
     }
 
     public void ratingByReleaseYear (){
-        Collections.sort(this.gameList, new Comparator<Game>() {
+        Collections.sort(gameList, new Comparator<Game>() {
             @Override
-            public int compare(Game o1, Game o2) {
-                return o1.getReleaseYear() - o2.getReleaseYear();
+            public int compare(Game g1, Game g2) {
+                return Integer.compare(g1.getReleaseYear(), g2.getReleaseYear());
             }
         });
+        System.out.println ("Rank op basis van ReleaseYear");
+        for (Game game : gameList){
+            System.out.println(game.getReleaseYear() +"\t"+ game.getGameTitle());
+
+        }
+    }
+
+    public void ratingByPlatform() {
+        Collections.sort(gameList, new Comparator<Game>() {
+            @Override
+            public int compare(Game o1, Game o2) {
+                return o1.getPlatform().compareTo(o2.getPlatform());
+            }
+        });
+        System.out.println ("Rank op basis van Platform");
+        for (Game game : gameList){
+            System.out.println(game.getPlatform() +"\t"+ game.getGameTitle());
+
+        }
     }
     public void showAll() {
         System.out.println("Alle games in de lijst:");
