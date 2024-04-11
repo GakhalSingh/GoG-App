@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Enquete {
-    private int reviewID;
-    private ArrayList<String> questions;
+    private final int reviewID;
+    private final ArrayList<String> questions;
     private ArrayList<String> answers;
 
     public Enquete(int reviewID) {
@@ -11,6 +11,19 @@ public class Enquete {
         this.questions = CSVReader.getEnqueteQuestions();
         this.answers = new ArrayList<>();
     }
+    public int getReviewID(){
+        return reviewID;
+    }
+    public ArrayList<String> getQuestions(){
+        return questions;
+    }
+    public ArrayList<String> getAnswers(){
+        return answers;
+    }
+    public void setAnswers(ArrayList<String> answers){
+        this.answers = answers;
+    }
+
     public void startEnquete() {
         Scanner scanner = new Scanner(System.in);
         for (String question : questions) {
@@ -19,8 +32,7 @@ public class Enquete {
             answers.add(answer);
         }
         System.out.println("Bedankt voor het invullen van de enquete!");
-        CSVWriter.writeEnquete(answers);
+        CSVWriter.writeEnquete(reviewID,answers);
     }
-
 
 }

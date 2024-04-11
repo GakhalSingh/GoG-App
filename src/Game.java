@@ -69,10 +69,9 @@ public class Game {
     }
 
     public void setAvgRating(){
-        CSVReader reader = new CSVReader();
         int reviewcount = 0;
         double avgRating = 0;
-        for (Review review : reader.readReviews()){
+        for (Review review : CSVReader.readReviews()){
             if (review.getGameID() == this.id){
                 avgRating += review.getAvgRating();
                 reviewcount++;

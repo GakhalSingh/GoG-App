@@ -85,3 +85,6 @@ fabric.properties
 *.iml
 out
 gen
+
+# Qodana Analysis file
+qodana.yaml

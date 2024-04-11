@@ -21,7 +21,8 @@ public class Menu {
         System.out.println("     5. Exit                      ");
         System.out.println("**********************************");
         System.out.print  ("        Kies een optie: ");
-    }public int getMenuChoice() {
+    }
+    public int getMenuChoice() {
 
         return scanner.nextInt();
     }

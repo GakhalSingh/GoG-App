@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         Operate operate = new Operate();
         Menu menu = new Menu(operate);
-        CSVReader csvReader = new CSVReader();
-        CSVWriter csvWriter = new CSVWriter();
+
         try {
             while (true) {
                 menu.mainMenu();

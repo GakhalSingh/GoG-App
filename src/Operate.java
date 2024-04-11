@@ -1,22 +1,27 @@
+import java.io.File;
 import java.text.DecimalFormat;
 import java.util.*;
 
 public class Operate {
     private List<Game> gameList;
     private List<Review> reviewList;
+    private List<Enquete> enqueteList;
     private CSVWriter csvWriter;
-    private CSVReader csvReader;
     private Scanner scanner;
 
     public Operate() {
         this.gameList = CSVReader.readGames();
         this.reviewList = CSVReader.readReviews();
-        this.csvReader = new CSVReader();
+        this.enqueteList = CSVReader.getEnqueteResponses();
         this.csvWriter = new CSVWriter();
         this.scanner = new Scanner(System.in);
     }
     public List<Game> getGameList() {
         return gameList;
+    }
+
+    public List<Review> getReviewList(){
+        return reviewList;
     }
 
     public void addNewReview() {
@@ -59,10 +64,52 @@ public class Operate {
             for (Review review : reviewList) {
                 System.out.println(review);
             }
-        } else {
+            //TODO een andere versie van displayEnquete maken die dit geeft als er geen parameter is
+            System.out.println("Vul een review ID in om de bijbehorende enquete te lezen, " +
+                    "toets 0 in om terug te gaan naar het hoofdmenu.");
+            int enqueteChoice = scanner.nextInt();
+            System.out.println();
+            if (enqueteChoice == 0){
+                return;
+            }
+            displayEnquete(enqueteChoice);
 
+        } else {
             System.out.println("Er zijn nog geen reviews toegevoegd.");
         }
+    }
+
+    private void displayEnquete(int enqueteChoice) {
+        for (Enquete enquete : enqueteList){
+            if (enquete.getReviewID() == enqueteChoice){
+                int counter = 0;
+                for (String question : enquete.getQuestions()){
+                    System.out.println(question);
+                    System.out.println(enquete.getAnswers().get(counter));
+                    System.out.println(String.format("%35s"," ").replace(" ", "="));
+                    counter++;
+                }
+            }
+        }
+    }
+
+    public Review getReview(int reviewID){
+        try{
+            File file = new File("reviews.csv");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] parts = line.split(";");
+                for (Review review : reviewList){
+                    if (review.getReviewID() == reviewID){
+                        return review;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     public void showReviewsByGame() {
@@ -90,8 +137,6 @@ public class Operate {
         }
     }
 
-
-
     public void searchByName(String gameName) {
         boolean found = false;
         for (Game game : gameList) {
@@ -106,6 +151,7 @@ public class Operate {
             System.out.println("Geen game gevonden met de naam: " + gameName);
         }
     }
+
     public void searchByJaar(int gameJaar) {
         boolean found = false;
         System.out.println("Games uit het jaar " + gameJaar + ":");
@@ -159,7 +205,6 @@ public class Operate {
         return null;
     }
 
-
     private int getNextReviewID() {
         int maxID = 0;
         for (Review review : reviewList) {
@@ -169,6 +214,7 @@ public class Operate {
         }
         return maxID + 1;
     }
+
     public void ratingByavgRating() {
         Collections.sort(gameList, new Comparator<Game>() {
             @Override
@@ -214,6 +260,7 @@ public class Operate {
 
         }
     }
+
     public void showAll() {
         System.out.println("Alle games in de lijst:");
         for (Game game : gameList) {
