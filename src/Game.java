@@ -6,14 +6,24 @@ public class Game {
     private int onSale;
     private double price;
     private double avgRating;
+    private String gameType;
 
-    public Game(int id, String gameTitle, String platform, int releaseYear, int onSale, double price) {
+    public String getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
+    }
+
+    public Game(int id, String gameTitle, String platform, int releaseYear, int onSale, double price, String gameType) {
         this.id = id;
         this.gameTitle = gameTitle;
         this.platform = platform;
         this.releaseYear = releaseYear;
         this.onSale = onSale;
         this.price = price;
+        this.gameType = gameType;
         refreshPrice();
         setAvgRating();
     }

@@ -19,15 +19,16 @@ public class CSVReader {
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
                 String[] parts = data.split(";");
-                if (parts.length == 6) {
+                if (parts.length == 7) {
                     int id = Integer.parseInt(parts[0]);
                     String gameTitle = parts[1];
                     String platform = parts[2];
                     int releaseYear = Integer.parseInt(parts[3]);
                     int onSale = Integer.parseInt(parts[4]);
                     double price = Double.parseDouble(parts[5]);
+                    String gameType = parts[6];
 
-                    Game game = new Game(id, gameTitle, platform, releaseYear, onSale, price);
+                    Game game = new Game(id, gameTitle, platform, releaseYear, onSale, price,gameType);
                     list.add(game);
                 } else {
                     System.out.println("Ongeldige rij: " + data);
