@@ -5,8 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Operate operate = new Operate();
         Menu menu = new Menu(operate);
-        CSVReader csvReader = new CSVReader();
-        CSVWriter csvWriter = new CSVWriter();
+
         try {
             while (true) {
                 menu.mainMenu();
