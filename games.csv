@@ -1,17 +1,17 @@
-PID;GameTitle;Platform;ReleaseYear;OnSale;Price
-1;Super Mario Bros.;NES;1985;false;9.99;
-2;The Legend of Zelda;NES;1986;false;9.99;
-3;Pac-Man;Arcade;1980;false;9.99;
-4;Tetris;Multiplatform;1984;false;9.99;
-5;Donkey Kong;Arcade;1981;false;9.99;
-6;Sonic the Hedgehog;Sega Genesis;1991;false;9.99;
-7;Street Fighter II;Arcade;1991;false;9.99;
-8;Super Metroid;SNES;1994;false;9.99;
-9;Final Fantasy VI;SNES;1994;false;9.99;
-10;Mega Man 2;NES;1988;false;9.99;
-11;Castlevania;NES;1986;false;9.99;
-12;Metroid;NES;1986;false;9.99;
-13;Contra;NES;1987;false;9.99;
-14;Space Invaders;Arcade;1978;false;9.99;
-15;Galaga;Arcade;1981;false;9.99;
-16;Duck Hunt;NES;1984;false;9.99;
+PID;GameTitle;Platform;ReleaseYear;OnSale;Price;Type
+1;Super Mario Bros.;NES;1985;false;9.99;RPG
+2;The Legend of Zelda;NES;1986;false;9.99;Puzzel
+3;Pac-Man;Arcade;1980;false;9.99;Puzzel
+4;Tetris;Multiplatform;1984;false;9.99;RPG
+5;Donkey Kong;Arcade;1981;false;9.99;Puzzel
+6;Sonic the Hedgehog;Sega Genesis;1991;false;9.99;RPG
+7;Street Fighter II;Arcade;1991;false;9.99;Puzzel
+8;Super Metroid;SNES;1994;false;9.99;Puzzel
+9;Final Fantasy VI;SNES;1994;false;9.99;RPG
+10;Mega Man 2;NES;1988;false;9.99;RPG
+11;Castlevania;NES;1986;false;9.99;Puzzel
+12;Metroid;NES;1986;false;9.99;RPG
+13;Contra;NES;1987;false;9.99;RPG
+14;Space Invaders;Arcade;1978;false;9.99;Puzzel
+15;Galaga;Arcade;1981;false;9.99;Puzzel
+16;Duck Hunt;NES;1984;false;9.99;Puzzel

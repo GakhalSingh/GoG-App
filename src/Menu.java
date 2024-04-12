@@ -103,7 +103,8 @@ public class Menu {
         System.out.println("1. Gerangschikt op Gemiddele Scroe");
         System.out.println("2. Gerangschikt op ReleaseYear");
         System.out.println ("3. Gerangschikt op Platform");
-        System.out.println ("4. Terug");
+        System.out.println ("4. Gerangschikt op Type");
+        System.out.println ("5. Terug");
         System.out.println("******************************");
         System.out.print  ("   Kies een optie: ");
         int orderMenuChoice = scanner.nextInt();
@@ -121,6 +122,9 @@ public class Menu {
                 operate.ratingByPlatform();
                 break;
             case 4:
+                operate.ratingByGameType();
+                break;
+            case 5:
                 mainMenu();
                 break;
             default:

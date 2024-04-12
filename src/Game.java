@@ -6,14 +6,16 @@ public class Game {
     private boolean onSale;
     private double price;
     private double avgRating;
+    private String gameType;
 
-    public Game(int id, String gameTitle, String platform, int releaseYear, boolean onSale, double price) {
+    public Game(int id, String gameTitle, String platform, int releaseYear, boolean onSale, double price,String gameType) {
         this.id = id;
         this.gameTitle = gameTitle;
         this.platform = platform;
         this.releaseYear = releaseYear;
         this.onSale = onSale;
         this.price = price;
+        this.gameType = gameType;
         setAvgRating();
     }
 
@@ -64,6 +66,8 @@ public class Game {
     public void setPrice(double price) {
         this.price = price;
     }
+
+
     public void setAvgRating(){
         CSVReader reader = new CSVReader();
         int reviewcount = 0;
@@ -92,5 +96,13 @@ public class Game {
                 ", onSale=" + onSale +
                 ", price=" + price +
                 '}';
+    }
+
+    public String getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
     }
 }

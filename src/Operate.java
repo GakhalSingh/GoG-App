@@ -197,6 +197,21 @@ public class Operate {
 
         }
     }
+
+    public void ratingByGameType() {
+        Collections.sort(gameList, new Comparator<Game>() {
+            @Override
+            public int compare(Game o1, Game o2) {
+
+                return o1.getGameType().compareTo(o2.getGameType());
+            }
+        });
+        System.out.println ("Rank op basis van Type: ");
+        for (Game game : gameList){
+            System.out.println(game.getGameType() +"\tGameTitel:"+ game.getGameTitle());
+
+        }
+    }
     public void showAll() {
         System.out.println("Alle games in de lijst:");
         for (Game game : gameList) {
