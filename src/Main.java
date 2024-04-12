@@ -5,7 +5,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Operate operate = new Operate();
         Menu menu = new Menu(operate);
-
         try {
             while (true) {
                 menu.mainMenu();
