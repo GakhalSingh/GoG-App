@@ -8,6 +8,8 @@ public class Game {
     private double avgRating;
     private String gameType;
 
+
+
     public String getGameType() {
         return gameType;
     }

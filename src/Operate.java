@@ -6,8 +6,10 @@ public class Operate {
     private List<Game> gameList;
     private List<Review> reviewList;
     private List<Enquete> enqueteList;
+
     private CSVWriter csvWriter;
     private Scanner scanner;
+ 
 
     public Operate() {
         this.gameList = CSVReader.readGames();
@@ -16,6 +18,7 @@ public class Operate {
         this.csvWriter = new CSVWriter();
         this.scanner = new Scanner(System.in);
     }
+
     public List<Game> getGameList() {
         return gameList;
     }
@@ -47,8 +50,8 @@ public class Operate {
             if (response.equalsIgnoreCase("Y")) {
                 Enquete enquete = new Enquete(reviewID);
                 enquete.startEnquete();
-
             }
+
             Review review = new Review(reviewID, game.getId(), username, gameplayScore, graphicsScore, storylineScore, comment);
             reviewList.add(review);
             csvWriter.createReview(review);
@@ -59,10 +62,27 @@ public class Operate {
     }
 
     public void showAllReviews() {
-        System.out.println(reviewList);
-        if (!reviewList.isEmpty()) {
-            for (Review review : reviewList) {
-                System.out.println(review);
+        List<Review> allReviews = CSVReader.readReviews(); // Lees alle reviews van CSV
+
+            if (allReviews.isEmpty()) {
+                System.out.println("Er zijn nog geen reviews toegevoegd.");
+                return;
+            }
+
+            for (Review review : allReviews) {
+                Game game = findGameById(review.getGameID());
+
+                if (game != null) {
+                System.out.println("╔═════════════════════════════════════════════════════════════════");
+                System.out.printf("║ Game Titel: %-15s%n", game.getGameTitle());
+                System.out.printf("║ Gebruikersnaam: %-15s%n", review.getUsername());
+                System.out.printf("║ Gameplay score: %d%n", review.getGameplayScore());
+                System.out.printf("║ Graphics score: %d%n", review.getGraphicsScore());
+                System.out.printf("║ Storyline score: %d%n", review.getStorylineScore());
+                System.out.printf("║ Opmerking: %s%n", review.getComment());
+                System.out.println("╚═════════════════════════════════════════════════════════════════");
+            } else {
+                System.out.println("Spel niet gevonden voor review ID: " + review.getReviewID());
             }
             //TODO een andere versie van displayEnquete maken die dit geeft als er geen parameter is
             System.out.println("Vul een review ID in om de bijbehorende enquete te lezen, " +
@@ -74,16 +94,14 @@ public class Operate {
             }
             displayEnquete(enqueteChoice);
 
-        } else {
-            System.out.println("Er zijn nog geen reviews toegevoegd.");
         }
     }
 
     private void displayEnquete(int enqueteChoice) {
-        for (Enquete enquete : enqueteList){
-            if (enquete.getReviewID() == enqueteChoice){
+        for (Enquete enquete : enqueteList) {
+            if (enquete.getReviewID() == enqueteChoice) {
                 int counter = 0;
-                for (String question : enquete.getQuestions()){
+                for (String question : enquete.getQuestions()) {
                     System.out.println(question);
                     System.out.println(enquete.getAnswers().get(counter));
                     System.out.println(String.format("%35s"," ").replace(" ", "="));
@@ -217,6 +235,15 @@ public class Operate {
         }
         return null;
     }
+        private Game findGameById(int gameId) {
+            for (Game game : gameList) {
+                if (game.getId() == gameId) {
+                    return game;
+                }
+            }
+            return null;
+        }
+
 
     private int getNextReviewID() {
         int maxID = 0;
