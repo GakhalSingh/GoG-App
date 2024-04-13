@@ -88,23 +88,24 @@ public class Menu {
                 mainMenu();
                 break;
             default:
-                System.out.println("╔═══════════════════════════════════════╗");
-                System.out.println("║ Ongeldige keuze. Probeer opnieuw 🥲. ║");
-                System.out.println("╚══════════════════════════════════════╝");
+                System.out.println("╔════════════════════════════════════╗");
+                System.out.println("║ Ongeldige keuze. Probeer opnieuw.  ║");
+                System.out.println("╚════════════════════════════════════╝");
 
                 break;
         }
     }
 
     public void searchMenu() {
-        System.out.println("╔═══════════════════════════════════════╗");
-        System.out.println("║               Zoekmenu                ║");
-        System.out.println(printUI("1. Zoek op naam"));
-        System.out.println(printUI("2. Zoek op jaartal"));
-        System.out.println(printUI("3. Zoek op platform"));
-        System.out.println(printUI("4. Alle games bekijken"));
-        System.out.println(printUI("5. Terug"));
-        System.out.println("╚═══════════════════════════════════════╝");
+        System.out.println("╔══════════════════════════════════════╗");
+        System.out.println("║              Zoekmenu                ║");
+        System.out.println("║ 1. Zoek op naam                      ║");
+        System.out.println("║ 2. Zoek op jaartal                   ║");
+        System.out.println("║ 3. Zoek op platform                  ║");
+        System.out.println("║ 4. Zoek op type                      ║");
+        System.out.println("║ 5. Alle games bekijken               ║");
+        System.out.println("║ 6. Terug                             ║");
+        System.out.println("╚══════════════════════════════════════╝");
         System.out.print("   Kies een optie: ");
 
         int searchMenuChoice = menuKeuze(5);
@@ -138,9 +139,15 @@ public class Menu {
                 operate.searchByPlatform(gamePlatform);
                 break;
             case 4:
-                operate.showAll();
+                System.out.println("Voer het Type van de game in om te zoeken:");
+                String gameType = scanner.nextLine();
+                operate.searchByType(gameType);
                 break;
             case 5:
+                operate.showAll();
+                break;
+
+            case 6:
                 mainMenu();
                 break;
         }
