@@ -16,11 +16,12 @@ public class Operate {
         this.csvWriter = new CSVWriter();
         this.scanner = new Scanner(System.in);
     }
+
     public List<Game> getGameList() {
         return gameList;
     }
 
-    public List<Review> getReviewList(){
+    public List<Review> getReviewList() {
         return reviewList;
     }
 
@@ -53,8 +54,10 @@ public class Operate {
             reviewList.add(review);
             csvWriter.createReview(review);
             System.out.println("Review succesvol toegevoegd!");
+            util.Input.waitForUser(scanner);
         } else {
             System.out.println("Game niet gevonden.");
+            util.Input.waitForUser(scanner);
         }
     }
 
@@ -63,45 +66,47 @@ public class Operate {
         if (!reviewList.isEmpty()) {
             for (Review review : reviewList) {
                 System.out.println(review);
+
             }
             //TODO een andere versie van displayEnquete maken die dit geeft als er geen parameter is
             System.out.println("Vul een review ID in om de bijbehorende enquete te lezen, " +
                     "toets 0 in om terug te gaan naar het hoofdmenu.");
             int enqueteChoice = Menu.menuKeuze(99999, scanner);
             System.out.println();
-            if (enqueteChoice == 0){
+            if (enqueteChoice == 0) {
                 return;
             }
             displayEnquete(enqueteChoice);
 
         } else {
             System.out.println("Er zijn nog geen reviews toegevoegd.");
+            util.Input.waitForUser(scanner);
         }
     }
 
     private void displayEnquete(int enqueteChoice) {
-        for (Enquete enquete : enqueteList){
-            if (enquete.getReviewID() == enqueteChoice){
+        for (Enquete enquete : enqueteList) {
+            if (enquete.getReviewID() == enqueteChoice) {
                 int counter = 0;
-                for (String question : enquete.getQuestions()){
+                for (String question : enquete.getQuestions()) {
                     System.out.println(question);
                     System.out.println(enquete.getAnswers().get(counter));
-                    System.out.println(String.format("%35s"," ").replace(" ", "="));
+                    System.out.println(String.format("%35s", " ").replace(" ", "="));
                     counter++;
                 }
             }
         }
     }
 
-    public Review getReview(int reviewID){
-        try{
+    public Review getReview(int reviewID) {
+        try {
             File file = new File("reviews.csv");
             Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()){
+            while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(";");
-                for (Review review : reviewList){
-                    if (review.getReviewID() == reviewID){
+                for (Review review : reviewList) {
+                    if (review.getReviewID() == reviewID) {
                         return review;
                     }
                 }
@@ -128,12 +133,18 @@ public class Operate {
                 System.out.println("Reviews voor " + gameName + ":");
                 for (Review review : reviews) {
                     System.out.println(review);
+                    util.Input.waitForUser(scanner);
+
                 }
             } else {
                 System.out.println("Er zijn geen reviews voor " + gameName + ".");
+                util.Input.waitForUser(scanner);
+
             }
         } else {
             System.out.println("Geen game gevonden met de naam: " + gameName);
+            util.Input.waitForUser(scanner);
+
         }
     }
 
@@ -150,6 +161,8 @@ public class Operate {
         if (!found) {
             System.out.println("Geen game gevonden met de naam: " + gameName);
         }
+        util.Input.waitForUser(scanner);
+
     }
 
     public void searchByJaar(int gameJaar) {
@@ -164,13 +177,14 @@ public class Operate {
         if (!found) {
             System.out.println("Geen games gevonden uit het jaar " + gameJaar);
         }
+        util.Input.waitForUser(scanner);
     }
 
     public void searchBySale(int gameOnSale) {
         boolean found = false;
         for (Game game : gameList) {
             if (game.isOnSale() >= 1 && game.isOnSale() <= gameOnSale) {
-                System.out.printf("| %3d %s | %20s | € %3.2f |",game.isOnSale(),"%",game.getGameTitle(), game.getPrice());
+                System.out.printf("║ %3d %s | %20s | € %3.2f ║", game.isOnSale(), "%", game.getGameTitle(), game.getPrice());
                 System.out.println();
                 found = true;
 
@@ -194,6 +208,7 @@ public class Operate {
         if (!found) {
             System.out.println("Geen games gevonden op het platform " + platform);
         }
+        util.Input.waitForUser(scanner);
     }
     public void searchByType(String type) {
         boolean found = false;
@@ -215,6 +230,7 @@ public class Operate {
                 return game;
             }
         }
+        util.Input.waitForUser(scanner);
         return null;
     }
 
@@ -225,39 +241,39 @@ public class Operate {
                 maxID = review.getReviewID();
             }
         }
+        util.Input.waitForUser(scanner);
         return maxID + 1;
     }
 
-    public void ratingByavgRating() {
+    public void ratingByAvgRating() {
         Collections.sort(gameList, new Comparator<Game>() {
             @Override
             public int compare(Game o1, Game o2) {
-                return Double.compare (o2.getAvgRating(), o1.getAvgRating());
+                return Double.compare(o2.getAvgRating(), o1.getAvgRating());
             }
         });
-        System.out.println ("Rank op basis van Eind Score: ");
+        System.out.println("Rank op basis van Eind Score: ");
         DecimalFormat df = new DecimalFormat("#.0");
-        int rank =1;
-        for (Game game : gameList){
-            System.out.println("Rank: "+ rank + "\t\t" + String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
+        int rank = 1;
+        for (Game game : gameList) {
+            System.out.println("Rank: " + rank + "\t\t" + String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
             rank++;
-
         }
-
+        util.Input.waitForUser(scanner);
     }
 
-    public void ratingByReleaseYear (){
+    public void ratingByReleaseYear() {
         Collections.sort(gameList, new Comparator<Game>() {
             @Override
             public int compare(Game g1, Game g2) {
                 return Integer.compare(g1.getReleaseYear(), g2.getReleaseYear());
             }
         });
-        System.out.println ("Rank op basis van ReleaseYear: ");
-        for (Game game : gameList){
-            System.out.println(game.getReleaseYear() +"\tGameTitel: "+ game.getGameTitle());
-
+        System.out.println("Rank op basis van ReleaseYear: ");
+        for (Game game : gameList) {
+            System.out.println(game.getReleaseYear() + "\tGameTitel: " + game.getGameTitle());
         }
+        util.Input.waitForUser(scanner);
     }
 
     public void ratingByPlatform() {
@@ -267,32 +283,34 @@ public class Operate {
                 return o1.getPlatform().compareTo(o2.getPlatform());
             }
         });
-        System.out.println ("Rank op basis van Platform: ");
-        for (Game game : gameList){
-            System.out.println(game.getPlatform() +"\tGameTitel:"+ game.getGameTitle());
-
+        System.out.println("Rank op basis van Platform: ");
+        for (Game game : gameList) {
+            System.out.println(game.getPlatform() + "\tGameTitel:" + game.getGameTitle());
         }
+        util.Input.waitForUser(scanner);
     }
 
-    public void ratingBygameType(){
+    public void ratingByGameType() {
         Collections.sort(gameList, new Comparator<Game>() {
             @Override
             public int compare(Game o1, Game o2) {
                 return o1.getGameType().compareTo(o2.getGameType());
             }
         });
-        System.out.println ("Rank op basis van Type: ");
-        for (Game game : gameList){
-            System.out.println(game.getGameType() +"\tGameTitel:"+ game.getGameTitle());
-
+        System.out.println("Rank op basis van Type: ");
+        for (Game game : gameList) {
+            System.out.println(game.getGameType() + "\tGameTitel:" + game.getGameTitle());
         }
+        util.Input.waitForUser(scanner);
     }
 
     public void showAll() {
         System.out.println("Alle games in de lijst:");
         for (Game game : gameList) {
             System.out.println(game);
+            util.Input.waitForUser(scanner);
         }
+        util.Input.waitForUser(scanner);
     }
 
 }

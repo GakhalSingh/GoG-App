@@ -1,0 +1,1 @@
+java -jar out\artifacts\GoG_App_jar\GoG-App.jar

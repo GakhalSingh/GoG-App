@@ -81,10 +81,13 @@ fabric.properties
 ### Example user template
 
 # IntelliJ project files
-.idea
+.idea/discord.xml
 *.iml
 out
 gen
 
+#fleet project files
+.fleet
+
 # Qodana Analysis file
-qodana.yaml
+qodana.yaml!/
