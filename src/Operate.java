@@ -16,11 +16,12 @@ public class Operate {
         this.csvWriter = new CSVWriter();
         this.scanner = new Scanner(System.in);
     }
+
     public List<Game> getGameList() {
         return gameList;
     }
 
-    public List<Review> getReviewList(){
+    public List<Review> getReviewList() {
         return reviewList;
     }
 
@@ -63,13 +64,14 @@ public class Operate {
         if (!reviewList.isEmpty()) {
             for (Review review : reviewList) {
                 System.out.println(review);
+
             }
             //TODO een andere versie van displayEnquete maken die dit geeft als er geen parameter is
             System.out.println("Vul een review ID in om de bijbehorende enquete te lezen, " +
                     "toets 0 in om terug te gaan naar het hoofdmenu.");
             int enqueteChoice = Menu.menuKeuze(99999, scanner);
             System.out.println();
-            if (enqueteChoice == 0){
+            if (enqueteChoice == 0) {
                 return;
             }
             displayEnquete(enqueteChoice);
@@ -80,28 +82,28 @@ public class Operate {
     }
 
     private void displayEnquete(int enqueteChoice) {
-        for (Enquete enquete : enqueteList){
-            if (enquete.getReviewID() == enqueteChoice){
+        for (Enquete enquete : enqueteList) {
+            if (enquete.getReviewID() == enqueteChoice) {
                 int counter = 0;
-                for (String question : enquete.getQuestions()){
+                for (String question : enquete.getQuestions()) {
                     System.out.println(question);
                     System.out.println(enquete.getAnswers().get(counter));
-                    System.out.println(String.format("%35s"," ").replace(" ", "="));
+                    System.out.println(String.format("%35s", " ").replace(" ", "="));
                     counter++;
                 }
             }
         }
     }
 
-    public Review getReview(int reviewID){
-        try{
+    public Review getReview(int reviewID) {
+        try {
             File file = new File("reviews.csv");
             Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()){
+            while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(";");
-                for (Review review : reviewList){
-                    if (review.getReviewID() == reviewID){
+                for (Review review : reviewList) {
+                    if (review.getReviewID() == reviewID) {
                         return review;
                     }
                 }
@@ -170,7 +172,7 @@ public class Operate {
         boolean found = false;
         for (Game game : gameList) {
             if (game.isOnSale() >= 1 && game.isOnSale() <= gameOnSale) {
-                System.out.printf("| %3d %s | %20s | € %3.2f |",game.isOnSale(),"%",game.getGameTitle(), game.getPrice());
+                System.out.printf("| %3d %s | %20s | € %3.2f |", game.isOnSale(), "%", game.getGameTitle(), game.getPrice());
                 System.out.println();
                 found = true;
 
@@ -215,34 +217,34 @@ public class Operate {
         return maxID + 1;
     }
 
-    public void ratingByavgRating() {
+    public void ratingByAvgRating() {
         Collections.sort(gameList, new Comparator<Game>() {
             @Override
             public int compare(Game o1, Game o2) {
-                return Double.compare (o2.getAvgRating(), o1.getAvgRating());
+                return Double.compare(o2.getAvgRating(), o1.getAvgRating());
             }
         });
-        System.out.println ("Rank op basis van Eind Score: ");
+        System.out.println("Rank op basis van Eind Score: ");
         DecimalFormat df = new DecimalFormat("#.0");
-        int rank =1;
-        for (Game game : gameList){
-            System.out.println("Rank: "+ rank + "\t\t" + String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
+        int rank = 1;
+        for (Game game : gameList) {
+            System.out.println("Rank: " + rank + "\t\t" + String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
             rank++;
 
         }
 
     }
 
-    public void ratingByReleaseYear (){
+    public void ratingByReleaseYear() {
         Collections.sort(gameList, new Comparator<Game>() {
             @Override
             public int compare(Game g1, Game g2) {
                 return Integer.compare(g1.getReleaseYear(), g2.getReleaseYear());
             }
         });
-        System.out.println ("Rank op basis van ReleaseYear: ");
-        for (Game game : gameList){
-            System.out.println(game.getReleaseYear() +"\tGameTitel: "+ game.getGameTitle());
+        System.out.println("Rank op basis van ReleaseYear: ");
+        for (Game game : gameList) {
+            System.out.println(game.getReleaseYear() + "\tGameTitel: " + game.getGameTitle());
 
         }
     }
@@ -254,23 +256,23 @@ public class Operate {
                 return o1.getPlatform().compareTo(o2.getPlatform());
             }
         });
-        System.out.println ("Rank op basis van Platform: ");
-        for (Game game : gameList){
-            System.out.println(game.getPlatform() +"\tGameTitel:"+ game.getGameTitle());
+        System.out.println("Rank op basis van Platform: ");
+        for (Game game : gameList) {
+            System.out.println(game.getPlatform() + "\tGameTitel:" + game.getGameTitle());
 
         }
     }
 
-    public void ratingBygameType(){
+    public void ratingByGameType() {
         Collections.sort(gameList, new Comparator<Game>() {
             @Override
             public int compare(Game o1, Game o2) {
                 return o1.getGameType().compareTo(o2.getGameType());
             }
         });
-        System.out.println ("Rank op basis van Type: ");
-        for (Game game : gameList){
-            System.out.println(game.getGameType() +"\tGameTitel:"+ game.getGameTitle());
+        System.out.println("Rank op basis van Type: ");
+        for (Game game : gameList) {
+            System.out.println(game.getGameType() + "\tGameTitel:" + game.getGameTitle());
 
         }
     }

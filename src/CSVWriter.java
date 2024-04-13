@@ -11,7 +11,7 @@ public class CSVWriter {
     public void writeGames(List<Game> games, String filePath) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
             // Schrijf de kop van het CSV-bestand
-            writer.println("ID;GameTitle;Platform;ReleaseYear;OnSale;Pric,Type");
+            writer.println("ID;GameTitle;Platform;ReleaseYear;OnSale;Price,Type");
 
             // Schrijf elk Game-object naar het CSV-bestand
             for (Game game : games) {
@@ -29,7 +29,7 @@ public class CSVWriter {
             System.out.println("Gegevens succesvol geschreven naar " + filePath);
 
         } catch (IOException e) {
-            System.out.println("Fout bij het schrijven naar CSV-bestand: " + e.getMessage());
+            System.out.println("Fout bij het opslaan van game: " + e.getMessage());
         }
     }
 
@@ -47,7 +47,7 @@ public class CSVWriter {
 
             String comment = review.getComment();
 
-            printWriter.println(reviewID + ";" + gameID + ";" + username + ";" +comment + ";" + gameplayScore + ";" + graphicsScore + ";" + storylineScore);
+            printWriter.println(reviewID + ";" + gameID + ";" + username + ";" + comment + ";" + gameplayScore + ";" + graphicsScore + ";" + storylineScore);
             System.out.println("Review toegevoegd: " + review);
         } catch (IOException e) {
             System.out.println("Fout bij het schrijven van de review: " + e.getMessage());
@@ -89,9 +89,9 @@ public class CSVWriter {
         return gameReviews;
     }
 
-    public static void writeEnquete(int reviewwID,List<String> answers) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("enquetes.csv",true))) {
-            writer.print(reviewwID+";");
+    public static void writeEnquete(int reviewwID, List<String> answers) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("enquetes.csv", true))) {
+            writer.print(reviewwID + ";");
             for (String answer : answers) {
                 writer.print(answer + ";");
             }

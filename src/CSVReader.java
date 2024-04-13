@@ -10,14 +10,14 @@ public class CSVReader {
         List<Game> list = new ArrayList<>();
         try {
             File file = new File("games.csv");
-            Scanner scanner = new Scanner(file);
+            Scanner fileScan = new Scanner(file);
 
-            if (scanner.hasNextLine()) {
-                scanner.nextLine();
+            if (fileScan.hasNextLine()) {
+                fileScan.nextLine();
             }
 
-            while (scanner.hasNextLine()) {
-                String data = scanner.nextLine();
+            while (fileScan.hasNextLine()) {
+                String data = fileScan.nextLine();
                 String[] parts = data.split(";");
                 if (parts.length == 7) {
                     int id = Integer.parseInt(parts[0]);
@@ -28,14 +28,14 @@ public class CSVReader {
                     double price = Double.parseDouble(parts[5]);
                     String gameType = parts[6];
 
-                    Game game = new Game(id, gameTitle, platform, releaseYear, onSale, price,gameType);
+                    Game game = new Game(id, gameTitle, platform, releaseYear, onSale, price, gameType);
                     list.add(game);
                 } else {
                     System.out.println("Ongeldige rij: " + data);
                 }
             }
 
-            scanner.close();
+            fileScan.close();
 
         } catch (FileNotFoundException e) {
             System.out.println("CSV bestand niet gevonden 😔");
@@ -102,7 +102,6 @@ public class CSVReader {
             if (scanner.hasNextLine()) {
                 scanner.nextLine();
             }
-            ArrayList<Enquete> enquetes = new ArrayList<>();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(";");
@@ -126,9 +125,9 @@ public class CSVReader {
 
             scanner.close();
 
-            } catch(FileNotFoundException e){
-                System.out.println("Bestand niet gevonden: " + e.getMessage());
-            }
-            return enqueteResponses;
+        } catch (FileNotFoundException e) {
+            System.out.println("Bestand niet gevonden: " + e.getMessage());
+        }
+        return enqueteResponses;
     }
 }
