@@ -13,25 +13,34 @@ public class Menu {
     }
 
     public void mainMenu() {
-        System.out.println("**********************************");
-        System.out.println("    Welkom bij Gameshop!          ");
-        System.out.println("     1. Game Reviews Bekijken     ");
-        System.out.println("     2. Game Opzoeken             ");
-        System.out.println("     3. Ranglijst                 ");
-        System.out.println("     4. Sales                     ");
-        System.out.println("     5. Exit                      ");
-        System.out.println("**********************************");
-        System.out.print  ("        Kies een optie: ");
+        System.out.println("    ##          ##");
+        System.out.println("      ##      ##");
+        System.out.println("    ##############");
+        System.out.println("  ####  ######  ####");
+        System.out.println("######################");
+        System.out.println("##  ##############  ##");
+        System.out.println("##  ##          ##  ##");
+        System.out.println("      ####  ####");
+        System.out.println(" ");
+        System.out.println("╔══════════════════════════════╗");
+        System.out.println("║      Welkom bij Gameshop!    ║");
+        System.out.println("║ 1. Game Reviews Bekijken     ║");
+        System.out.println("║ 2. Game Opzoeken             ║");
+        System.out.println("║ 3. Ranglijst                 ║");
+        System.out.println("║ 4. Sales                     ║");
+        System.out.println("║ 5. Exit                      ║");
+        System.out.println("╚══════════════════════════════╝");
+        System.out.print  ("~ ~ ~  Kies een optie :  ~ ~ ~");
     }
 
     public void addMenu() {
-        System.out.println("*******************************");
-        System.out.println("1. Nieuwe game review toevoegen");
-        System.out.println("2. Alle reviews bekijken");
-        System.out.println("3. Reviews per game bekijken");
-        System.out.println("4. Terug");
-        System.out.println("*******************************");
-        System.out.print  ("   Kies een optie: ");
+        System.out.println("╔═════════════════════════════════╗");
+        System.out.println("║ 1. Nieuwe game review toevoegen ║");
+        System.out.println("║ 2. Alle reviews bekijken        ║");
+        System.out.println("║ 3. Reviews per game bekijken    ║");
+        System.out.println("║ 4. Terug                        ║");
+        System.out.println("╚═════════════════════════════════╝");
+        System.out.print  ("~ ~ ~  ~ Kies een optie :  ~ ~ ~ ~");
         int addMenuChoice = MenuKeuze(4);
 
         switch (addMenuChoice) {
@@ -39,31 +48,40 @@ public class Menu {
                 operate.addNewReview();
                 break;
             case 2:
-                System.out.println("Alle reviews van games:");
+                System.out.println("╔════════════════════════════════════╗");
+                System.out.println("║🎮🌟 Bekijk wat gamers zeggen! 🌟🎮║");
+                System.out.println("╚════════════════════════════════════╝");
+
                 operate.showAllReviews();
                 break;
             case 3:
-                System.out.println("Reviews per game bekijken:");
+                System.out.println("╔════════════════════════════════════╗");
+                System.out.println("🔍🎮 Bekijk de reviews per spel! 🎮🔍");
+                System.out.println("╚════════════════════════════════════╝");
                 operate.showReviewsByGame();
                 break;
             case 4:
                 mainMenu();
                 break;
             default:
-                System.out.println("Ongeldige keuze. Probeer opnieuw.");
+                System.out.println("╔════════════════════════════════════╗");
+                System.out.println("║Ongeldige keuze. Probeer opnieuw 🥲.║");
+                System.out.println("╚════════════════════════════════════╝");
+
                 break;
         }
     }
 
     public void searchMenu() {
-        System.out.println("*******************************");
-        System.out.println("1. Zoek op naam");
-        System.out.println("2. Zoek op jaartal");
-        System.out.println("3. Zoek op platform");
-        System.out.println("4. Alle games bekijken");
-        System.out.println("5. Terug");
-        System.out.println("*******************************");
-        System.out.print  ("   Kies een optie: ");
+        System.out.println("╔══════════════════════════════════════╗");
+        System.out.println("║        🔍    Zoekmenu    🔎          ║");
+        System.out.println("║ 1. Zoek op naam                      ║");
+        System.out.println("║ 2. Zoek op jaartal                   ║");
+        System.out.println("║ 3. Zoek op platform                  ║");
+        System.out.println("║ 4. Alle games bekijken               ║");
+        System.out.println("║ 5. Terug                             ║");
+        System.out.println("╚══════════════════════════════════════╝");
+        System.out.print("   Kies een optie: ");
 
         int searchMenuChoice = MenuKeuze(5);
 
@@ -95,13 +113,13 @@ public class Menu {
     }
 
     public void orderMenu() {
-        System.out.println("******************************");
-        System.out.println("1. Gerangschikt op Gemiddele Scroe");
-        System.out.println("2. Gerangschikt op ReleaseYear");
-        System.out.println ("3. Gerangschikt op Platform");
-        System.out.println ("4. Gerangschikt op Type");
-        System.out.println ("5. Terug");
-        System.out.println("******************************");
+        System.out.println("╔══════════════════════════════════════╗");
+        System.out.println("║ 1. Gerangschikt op Gemiddele Score   ║");
+        System.out.println("║2. Gerangschikt op ReleaseYear        ║");
+        System.out.println("║3. Gerangschikt op Platform           ║");
+        System.out.println("║4. Gerangschikt op Type               ║");
+        System.out.println("║5. Terug                              ║");
+        System.out.println("╚══════════════════════════════════════╝");
         System.out.print  ("   Kies een optie: ");
         int orderMenuChoice = MenuKeuze(4);
 
@@ -124,7 +142,18 @@ public class Menu {
                 mainMenu();
                 break;
             default:
-                System.out.println("Ongeldige keuze. Probeer opnieuw.");
+                System.out.println("dat was geen optie maat");
+                System.out.println("░░░░░░░█▐▓▓░████▄▄▄█▀▄▓▓▓▌█");
+                System.out.println("░░░░░▄█▌▀▄▓▓▄▄▄▄▀▀▀▄▓▓▓▓▓▌█");
+                System.out.println("░░░▄█▀▀▄▓█▓▓▓▓▓▓▓▓▓▓▓▓▀░▓▌█");
+                System.out.println("░░█▀▄▓▓▓███▓▓▓███▓▓▓▄░░▄▓▐█▌");
+                System.out.println("░█▌▓▓▓▀▀▓▓▓▓███▓▓▓▓▓▓▓▄▀▓▓▐█");
+                System.out.println("▐█▐██▐░▄▓▓▓▓▓▀▄░▀▓▓▓▓▓▓▓▓▓▌█▌");
+                System.out.println("█▌███▓▓▓▓▓▓▓▓▐░░▄▓▓███▓▓▓▄▀▐█");
+                System.out.println("█▐█▓▀░░▀▓▓▓▓▓▓▓▓▓██████▓▓▓▓▐█");
+                System.out.println("▌▓▄▌▀░▀░▐▀█▄▓▓██████████▓▓▓▌█▌");
+                System.out.println("▌▓▓▓▄▄▀▀▓▓▓▀▓▓▓▓▓▓▓▓█▓█▓█▓▓▌█▌");
+                System.out.println("█▐▓▓▓▓▓▓▄▄▄▓▓▓▓▓▓█▓█▓█▓█▓▓▓▐█");
                 break;
         }
     }
@@ -132,9 +161,9 @@ public class Menu {
 
 
     public void salesMenu() {
-        System.out.println("*****************************************");
+        System.out.println("╔══════════════════════════════════════╗");
         operate.searchBySale( 100);
-        System.out.println("*****************************************");
+        System.out.println("╚══════════════════════════════════════╝");
 
     }
 
