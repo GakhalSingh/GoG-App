@@ -99,14 +99,14 @@ public class Game {
 
     @Override
     public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", gameTitle='" + gameTitle + '\'' +
-                ", platform='" + platform + '\'' +
-                ", releaseYear=" + releaseYear +
-                ", onSale=" + onSale +
-                ", Type=" + gameType +
-                ", price=" + price +
-                '}';
+        return  String.format(
+                   "╔══════════════════════════════════════╗" +
+                           "\n║ gameTitle   =  %-22s" +
+                           "║\n║ platform    =  %-22s" +
+                           "║\n║ releaseYear =  %-22d" +
+                           "║\n║ onSale      =  %-22d" +
+                           "║\n║ Type        =  %-22s" +
+                           "║\n║ price       =  € %3.2f                " +
+                           "║\n╚══════════════════════════════════════╝", gameTitle, platform, releaseYear, onSale, gameType, price);
     }
 }
