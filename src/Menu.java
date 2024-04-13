@@ -24,7 +24,7 @@ public class Menu {
         System.out.println(printUI("2. Game Opzoeken"));
         System.out.println(printUI("3. Ranglijst"));
         System.out.println(printUI("4. Sales"));
-        System.out.println(printUI("5. Keuzes"));
+        System.out.println(printUI("5. Sluit GoG af"));
         System.out.println("╚═══════════════════════════════════════╝");
         System.out.print  ("~ ~ ~  Kies een optie :  ~ ~ ~ > ");
         int mainMenuVraag = menuKeuze(5);
@@ -187,6 +187,7 @@ public class Menu {
         System.out.println("╔═══════════════════════════════════════╗");
         operate.searchBySale(100);
         System.out.println("╚═══════════════════════════════════════╝");
+        util.Input.waitForUser(scanner);
 
     }
 

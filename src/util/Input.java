@@ -30,4 +30,10 @@ public class Input {
     public static int navigate(){
         return 1;
     }
+
+    // simpele loop om het programma op de gebruiker te laten wachten
+    public static void waitForUser(Scanner scanner){
+        System.out.print("Druk op enter om door te gaan. > ");
+        scanner.nextLine();
+    }
 }

@@ -54,8 +54,10 @@ public class Operate {
             reviewList.add(review);
             csvWriter.createReview(review);
             System.out.println("Review succesvol toegevoegd!");
+            util.Input.waitForUser(scanner);
         } else {
             System.out.println("Game niet gevonden.");
+            util.Input.waitForUser(scanner);
         }
     }
 
@@ -78,6 +80,7 @@ public class Operate {
 
         } else {
             System.out.println("Er zijn nog geen reviews toegevoegd.");
+            util.Input.waitForUser(scanner);
         }
     }
 
@@ -130,12 +133,18 @@ public class Operate {
                 System.out.println("Reviews voor " + gameName + ":");
                 for (Review review : reviews) {
                     System.out.println(review);
+                    util.Input.waitForUser(scanner);
+
                 }
             } else {
                 System.out.println("Er zijn geen reviews voor " + gameName + ".");
+                util.Input.waitForUser(scanner);
+
             }
         } else {
             System.out.println("Geen game gevonden met de naam: " + gameName);
+            util.Input.waitForUser(scanner);
+
         }
     }
 
@@ -152,6 +161,8 @@ public class Operate {
         if (!found) {
             System.out.println("Geen game gevonden met de naam: " + gameName);
         }
+        util.Input.waitForUser(scanner);
+
     }
 
     public void searchByJaar(int gameJaar) {
@@ -166,6 +177,7 @@ public class Operate {
         if (!found) {
             System.out.println("Geen games gevonden uit het jaar " + gameJaar);
         }
+        util.Input.waitForUser(scanner);
     }
 
     public void searchBySale(int gameOnSale) {
@@ -196,6 +208,7 @@ public class Operate {
         if (!found) {
             System.out.println("Geen games gevonden op het platform " + platform);
         }
+        util.Input.waitForUser(scanner);
     }
 
     private Game findGameByName(String gameName) {
@@ -204,6 +217,7 @@ public class Operate {
                 return game;
             }
         }
+        util.Input.waitForUser(scanner);
         return null;
     }
 
@@ -214,6 +228,7 @@ public class Operate {
                 maxID = review.getReviewID();
             }
         }
+        util.Input.waitForUser(scanner);
         return maxID + 1;
     }
 
@@ -230,9 +245,8 @@ public class Operate {
         for (Game game : gameList) {
             System.out.println("Rank: " + rank + "\t\t" + String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
             rank++;
-
         }
-
+        util.Input.waitForUser(scanner);
     }
 
     public void ratingByReleaseYear() {
@@ -245,8 +259,8 @@ public class Operate {
         System.out.println("Rank op basis van ReleaseYear: ");
         for (Game game : gameList) {
             System.out.println(game.getReleaseYear() + "\tGameTitel: " + game.getGameTitle());
-
         }
+        util.Input.waitForUser(scanner);
     }
 
     public void ratingByPlatform() {
@@ -259,8 +273,8 @@ public class Operate {
         System.out.println("Rank op basis van Platform: ");
         for (Game game : gameList) {
             System.out.println(game.getPlatform() + "\tGameTitel:" + game.getGameTitle());
-
         }
+        util.Input.waitForUser(scanner);
     }
 
     public void ratingByGameType() {
@@ -273,15 +287,17 @@ public class Operate {
         System.out.println("Rank op basis van Type: ");
         for (Game game : gameList) {
             System.out.println(game.getGameType() + "\tGameTitel:" + game.getGameTitle());
-
         }
+        util.Input.waitForUser(scanner);
     }
 
     public void showAll() {
         System.out.println("Alle games in de lijst:");
         for (Game game : gameList) {
             System.out.println(game);
+            util.Input.waitForUser(scanner);
         }
+        util.Input.waitForUser(scanner);
     }
 
 }
