@@ -73,6 +73,10 @@ public class Review {
         this.comment = comment;
     }
 
+    public double getAvgRating() {
+        return (gameplayScore + graphicsScore + storylineScore) / 3.0;
+    }
+
     @Override
     public String toString() {
         return "Review ID: " + reviewID + "\n" +

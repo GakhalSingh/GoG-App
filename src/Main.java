@@ -2,15 +2,15 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         Operate operate = new Operate();
         Menu menu = new Menu(operate);
-        CSVReader csvReader = new CSVReader();
-        CSVWriter csvWriter = new CSVWriter();
+
         try {
             while (true) {
                 menu.mainMenu();
-                int mainMenuVraag = menu.getMenuChoice();
+                int mainMenuVraag = Menu.menuKeuze(5, scanner);
 
                 switch (mainMenuVraag) {
                     case 1:
@@ -26,7 +26,7 @@ public class Main {
                         menu.orderMenu();
                         break;
                     case 4:
-                        System.out.println("Je hebt gekozen voor Sales.");
+                        System.out.println("Games in de uitverkoop:");
                         menu.salesMenu();
                         break;
                     case 5:

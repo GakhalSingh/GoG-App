@@ -1,15 +1,18 @@
+import java.io.File;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Operate {
     private List<Game> gameList;
     private List<Review> reviewList;
+    private List<Enquete> enqueteList;
     private CSVWriter csvWriter;
-    private CSVReader csvReader;
     private Scanner scanner;
 
     public Operate() {
         this.gameList = CSVReader.readGames();
-        this.csvReader = new CSVReader();
+        this.reviewList = CSVReader.readReviews();
+        this.enqueteList = CSVReader.getEnqueteResponses();
         this.csvWriter = new CSVWriter();
         this.scanner = new Scanner(System.in);
     }
@@ -17,24 +20,36 @@ public class Operate {
         return gameList;
     }
 
+    public List<Review> getReviewList(){
+        return reviewList;
+    }
+
     public void addNewReview() {
         System.out.println("Over welk spel wil je een review plaatsen?");
         String gameName = scanner.nextLine();
         Game game = findGameByName(gameName);
         if (game != null) {
+            int reviewID = getNextReviewID();
             System.out.println("Geef je gebruikersnaam:");
             String username = scanner.nextLine();
             System.out.println("Geef de gameplay score (1-10):");
-            int gameplayScore = scanner.nextInt();
+            int gameplayScore = Menu.menuKeuze(10, scanner);
             System.out.println("Geef de graphics score (1-10):");
-            int graphicsScore = scanner.nextInt();
+            int graphicsScore = Menu.menuKeuze(10, scanner);
             System.out.println("Geef de storyline score (1-10):");
-            int storylineScore = scanner.nextInt();
+            int storylineScore = Menu.menuKeuze(10, scanner);
             scanner.nextLine();
             System.out.println("Voeg een opmerking toe:");
             String comment = scanner.nextLine();
 
-            Review review = new Review(getNextReviewID(), game.getId(), username, gameplayScore, graphicsScore, storylineScore, comment);
+            System.out.println("Wil je nog meedoen met onze vragenlijst (Y/N)");
+            String response = scanner.nextLine();
+            if (response.equalsIgnoreCase("Y")) {
+                Enquete enquete = new Enquete(reviewID);
+                enquete.startEnquete();
+
+            }
+            Review review = new Review(reviewID, game.getId(), username, gameplayScore, graphicsScore, storylineScore, comment);
             reviewList.add(review);
             csvWriter.createReview(review);
             System.out.println("Review succesvol toegevoegd!");
@@ -44,16 +59,57 @@ public class Operate {
     }
 
     public void showAllReviews() {
-        List<Review> reviews = csvReader.readReviews();
-        System.out.println(reviews);
-        if (!reviews.isEmpty()) {
-            for (Review review : reviews) {
+        System.out.println(reviewList);
+        if (!reviewList.isEmpty()) {
+            for (Review review : reviewList) {
                 System.out.println(review);
             }
-        } else {
+            //TODO een andere versie van displayEnquete maken die dit geeft als er geen parameter is
+            System.out.println("Vul een review ID in om de bijbehorende enquete te lezen, " +
+                    "toets 0 in om terug te gaan naar het hoofdmenu.");
+            int enqueteChoice = Menu.menuKeuze(99999, scanner);
+            System.out.println();
+            if (enqueteChoice == 0){
+                return;
+            }
+            displayEnquete(enqueteChoice);
 
+        } else {
             System.out.println("Er zijn nog geen reviews toegevoegd.");
         }
+    }
+
+    private void displayEnquete(int enqueteChoice) {
+        for (Enquete enquete : enqueteList){
+            if (enquete.getReviewID() == enqueteChoice){
+                int counter = 0;
+                for (String question : enquete.getQuestions()){
+                    System.out.println(question);
+                    System.out.println(enquete.getAnswers().get(counter));
+                    System.out.println(String.format("%35s"," ").replace(" ", "="));
+                    counter++;
+                }
+            }
+        }
+    }
+
+    public Review getReview(int reviewID){
+        try{
+            File file = new File("reviews.csv");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] parts = line.split(";");
+                for (Review review : reviewList){
+                    if (review.getReviewID() == reviewID){
+                        return review;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     public void showReviewsByGame() {
@@ -81,8 +137,6 @@ public class Operate {
         }
     }
 
-
-
     public void searchByName(String gameName) {
         boolean found = false;
         for (Game game : gameList) {
@@ -97,6 +151,7 @@ public class Operate {
             System.out.println("Geen game gevonden met de naam: " + gameName);
         }
     }
+
     public void searchByJaar(int gameJaar) {
         boolean found = false;
         System.out.println("Games uit het jaar " + gameJaar + ":");
@@ -110,6 +165,23 @@ public class Operate {
             System.out.println("Geen games gevonden uit het jaar " + gameJaar);
         }
     }
+
+    public void searchBySale(int gameOnSale) {
+        boolean found = false;
+        for (Game game : gameList) {
+            if (game.isOnSale() >= 1 && game.isOnSale() <= gameOnSale) {
+                System.out.printf("| %3d %s | %20s | € %3.2f |",game.isOnSale(),"%",game.getGameTitle(), game.getPrice());
+                System.out.println();
+                found = true;
+
+            }
+        }
+
+        if (!found) {
+            System.out.println("Geen games in de uitverkoop :(");
+        }
+    }
+
     public void searchByPlatform(String platform) {
         boolean found = false;
         System.out.println("Games op het platform " + platform + ":");
@@ -133,7 +205,6 @@ public class Operate {
         return null;
     }
 
-
     private int getNextReviewID() {
         int maxID = 0;
         for (Review review : reviewList) {
@@ -143,18 +214,67 @@ public class Operate {
         }
         return maxID + 1;
     }
+
     public void ratingByavgRating() {
+        Collections.sort(gameList, new Comparator<Game>() {
+            @Override
+            public int compare(Game o1, Game o2) {
+                return Double.compare (o2.getAvgRating(), o1.getAvgRating());
+            }
+        });
+        System.out.println ("Rank op basis van Eind Score: ");
+        DecimalFormat df = new DecimalFormat("#.0");
+        int rank =1;
+        for (Game game : gameList){
+            System.out.println("Rank: "+ rank + "\t\t" + String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
+            rank++;
+
+        }
 
     }
 
     public void ratingByReleaseYear (){
-        Collections.sort(this.gameList, new Comparator<Game>() {
+        Collections.sort(gameList, new Comparator<Game>() {
             @Override
-            public int compare(Game o1, Game o2) {
-                return o1.getReleaseYear() - o2.getReleaseYear();
+            public int compare(Game g1, Game g2) {
+                return Integer.compare(g1.getReleaseYear(), g2.getReleaseYear());
             }
         });
+        System.out.println ("Rank op basis van ReleaseYear: ");
+        for (Game game : gameList){
+            System.out.println(game.getReleaseYear() +"\tGameTitel: "+ game.getGameTitle());
+
+        }
     }
+
+    public void ratingByPlatform() {
+        Collections.sort(gameList, new Comparator<Game>() {
+            @Override
+            public int compare(Game o1, Game o2) {
+                return o1.getPlatform().compareTo(o2.getPlatform());
+            }
+        });
+        System.out.println ("Rank op basis van Platform: ");
+        for (Game game : gameList){
+            System.out.println(game.getPlatform() +"\tGameTitel:"+ game.getGameTitle());
+
+        }
+    }
+
+    public void ratingBygameType(){
+        Collections.sort(gameList, new Comparator<Game>() {
+            @Override
+            public int compare(Game o1, Game o2) {
+                return o1.getGameType().compareTo(o2.getGameType());
+            }
+        });
+        System.out.println ("Rank op basis van Type: ");
+        for (Game game : gameList){
+            System.out.println(game.getGameType() +"\tGameTitel:"+ game.getGameTitle());
+
+        }
+    }
+
     public void showAll() {
         System.out.println("Alle games in de lijst:");
         for (Game game : gameList) {

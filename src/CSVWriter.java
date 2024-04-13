@@ -10,7 +10,10 @@ import java.io.FileNotFoundException;
 public class CSVWriter {
     public void writeGames(List<Game> games, String filePath) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
-            writer.println("ID;GameTitle;Platform;ReleaseYear;OnSale;Price");
+            // Schrijf de kop van het CSV-bestand
+            writer.println("ID;GameTitle;Platform;ReleaseYear;OnSale;Pric,Type");
+
+            // Schrijf elk Game-object naar het CSV-bestand
             for (Game game : games) {
                 writer.println(
                         game.getId() + ";" +
@@ -18,10 +21,13 @@ public class CSVWriter {
                                 game.getPlatform() + ";" +
                                 game.getReleaseYear() + ";" +
                                 game.isOnSale() + ";" +
-                                game.getPrice()
+                                game.getPrice() + ";" +
+                                game.getGameType()
                 );
             }
+
             System.out.println("Gegevens succesvol geschreven naar " + filePath);
+
         } catch (IOException e) {
             System.out.println("Fout bij het schrijven naar CSV-bestand: " + e.getMessage());
         }
@@ -29,19 +35,19 @@ public class CSVWriter {
 
     // afblijven - jin
     public void createReview(Review review) {
-        try (FileWriter fileWriter = new FileWriter("GoG-App/reviews.csv", true);
+        try (FileWriter fileWriter = new FileWriter("reviews.csv", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
 
             int reviewID = review.getReviewID();
             int gameID = review.getGameID();
             String username = review.getUsername();
-            int gameplayScore = review.getGameplayScore();
-            int graphicsScore = review.getGraphicsScore();
-            int storylineScore = review.getStorylineScore();
+            double gameplayScore = review.getGameplayScore();
+            double graphicsScore = review.getGraphicsScore();
+            double storylineScore = review.getStorylineScore();
 
             String comment = review.getComment();
 
-            printWriter.println(reviewID + ";" + gameID + ";" + username + ";" + gameplayScore + ";" + graphicsScore + ";" + storylineScore + ";" +comment);
+            printWriter.println(reviewID + ";" + gameID + ";" + username + ";" +comment + ";" + gameplayScore + ";" + graphicsScore + ";" + storylineScore);
             System.out.println("Review toegevoegd: " + review);
         } catch (IOException e) {
             System.out.println("Fout bij het schrijven van de review: " + e.getMessage());
@@ -51,7 +57,7 @@ public class CSVWriter {
     public List<Review> readReviewsForGame(int gameID) {
         List<Review> gameReviews = new ArrayList<>();
         try {
-            File file = new File("GoG-App/reviews.csv");
+            File file = new File("reviews.csv");
             Scanner scanner = new Scanner(file);
 
             if (scanner.hasNextLine()) {
@@ -82,4 +88,18 @@ public class CSVWriter {
         }
         return gameReviews;
     }
+
+    public static void writeEnquete(int reviewwID,List<String> answers) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("enquetes.csv",true))) {
+            writer.print(reviewwID+";");
+            for (String answer : answers) {
+                writer.print(answer + ";");
+            }
+            writer.println("");
+            System.out.println("Etiketten succesvol geschreven naar enquetes.csv");
+        } catch (IOException e) {
+            System.out.println("Fout bij het schrijven naar CSV-bestand: " + e.getMessage());
+        }
+    }
+
 }

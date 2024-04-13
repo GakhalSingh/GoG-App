@@ -3,16 +3,29 @@ public class Game {
     private String gameTitle;
     private String platform;
     private int releaseYear;
-    private boolean onSale;
+    private int onSale;
     private double price;
+    private double avgRating;
+    private String gameType;
 
-    public Game(int id, String gameTitle, String platform, int releaseYear, boolean onSale, double price) {
+    public String getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(String gameType) {
+        this.gameType = gameType;
+    }
+
+    public Game(int id, String gameTitle, String platform, int releaseYear, int onSale, double price, String gameType) {
         this.id = id;
         this.gameTitle = gameTitle;
         this.platform = platform;
         this.releaseYear = releaseYear;
         this.onSale = onSale;
         this.price = price;
+        this.gameType = gameType;
+        refreshPrice();
+        setAvgRating();
     }
 
     public int getId() {
@@ -47,11 +60,11 @@ public class Game {
         this.releaseYear = releaseYear;
     }
 
-    public boolean isOnSale() {
+    public int isOnSale() {
         return onSale;
     }
 
-    public void setOnSale(boolean onSale) {
+    public void setOnSale(int onSale) {
         this.onSale = onSale;
     }
 
@@ -59,9 +72,30 @@ public class Game {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void refreshPrice() {
+        if (onSale != 0) {
+            this.price = price - (price * (onSale*0.01));
+        }
     }
+
+    public void setAvgRating(){
+        int reviewcount = 0;
+        double avgRating = 0;
+        for (Review review : CSVReader.readReviews()){
+            if (review.getGameID() == this.id){
+                avgRating += review.getAvgRating();
+                reviewcount++;
+            }
+        }
+        if (reviewcount != 0){
+            this.avgRating = avgRating / reviewcount;
+        }
+    }
+    public double getAvgRating(){
+        return avgRating;
+    }
+
+
 
     @Override
     public String toString() {
