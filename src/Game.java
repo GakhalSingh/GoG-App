@@ -105,6 +105,7 @@ public class Game {
                 ", platform='" + platform + '\'' +
                 ", releaseYear=" + releaseYear +
                 ", onSale=" + onSale +
+                ", Type=" + gameType +
                 ", price=" + price +
                 '}';
     }

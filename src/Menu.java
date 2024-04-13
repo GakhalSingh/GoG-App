@@ -94,7 +94,7 @@ public class Menu {
                 break;
             default:
                 System.out.println("╔════════════════════════════════════╗");
-                System.out.println("║Ongeldige keuze. Probeer opnieuw 🥲.║");
+                System.out.println("║ Ongeldige keuze. Probeer opnieuw.  ║");
                 System.out.println("╚════════════════════════════════════╝");
 
                 break;
@@ -103,12 +103,13 @@ public class Menu {
 
     public void searchMenu() {
         System.out.println("╔══════════════════════════════════════╗");
-        System.out.println("║        🔍    Zoekmenu    🔎          ║");
+        System.out.println("║              Zoekmenu                ║");
         System.out.println("║ 1. Zoek op naam                      ║");
         System.out.println("║ 2. Zoek op jaartal                   ║");
         System.out.println("║ 3. Zoek op platform                  ║");
-        System.out.println("║ 4. Alle games bekijken               ║");
-        System.out.println("║ 5. Terug                             ║");
+        System.out.println("║ 4. Zoek op type                      ║");
+        System.out.println("║ 5. Alle games bekijken               ║");
+        System.out.println("║ 6. Terug                             ║");
         System.out.println("╚══════════════════════════════════════╝");
         System.out.print("   Kies een optie: ");
 
@@ -133,10 +134,15 @@ public class Menu {
                 operate.searchByPlatform(gamePlatform);
                 break;
             case 4:
+                System.out.println("Voer het Type van de game in om te zoeken:");
+                String gameType = scanner.nextLine();
+                operate.searchByType(gameType);
+                break;
+            case 5:
                 operate.showAll();
                 break;
 
-            case 5:
+            case 6:
                 mainMenu();
                 break;
         }
@@ -145,10 +151,10 @@ public class Menu {
     public void orderMenu() {
         System.out.println("╔══════════════════════════════════════╗");
         System.out.println("║ 1. Gerangschikt op Gemiddele Score   ║");
-        System.out.println("║2. Gerangschikt op ReleaseYear        ║");
-        System.out.println("║3. Gerangschikt op Platform           ║");
-        System.out.println("║4. Gerangschikt op Type               ║");
-        System.out.println("║5. Terug                              ║");
+        System.out.println("║ 2. Gerangschikt op ReleaseYear       ║");
+        System.out.println("║ 3. Gerangschikt op Platform          ║");
+        System.out.println("║ 4. Gerangschikt op Type              ║");
+        System.out.println("║ 5. Terug                             ║");
         System.out.println("╚══════════════════════════════════════╝");
         System.out.print  ("   Kies een optie: ");
 

@@ -195,6 +195,19 @@ public class Operate {
             System.out.println("Geen games gevonden op het platform " + platform);
         }
     }
+    public void searchByType(String type) {
+        boolean found = false;
+        System.out.println("Games op de type " + type + ":");
+        for (Game game : gameList) {
+            if (game.getGameType().equalsIgnoreCase(type)) {
+                System.out.println(game);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Geen games gevonden op het platform " + type);
+        }
+    }
 
     private Game findGameByName(String gameName) {
         for (Game game : gameList) {
