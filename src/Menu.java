@@ -1,5 +1,3 @@
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -41,7 +39,7 @@ public class Menu {
         System.out.println("║ 4. Terug                        ║");
         System.out.println("╚═════════════════════════════════╝");
         System.out.print  ("~ ~ ~  ~ Kies een optie :  ~ ~ ~ ~");
-        int addMenuChoice = MenuKeuze(4);
+        int addMenuChoice = menuKeuze(4);
 
         switch (addMenuChoice) {
             case 1:
@@ -83,7 +81,7 @@ public class Menu {
         System.out.println("╚══════════════════════════════════════╝");
         System.out.print("   Kies een optie: ");
 
-        int searchMenuChoice = MenuKeuze(5);
+        int searchMenuChoice = menuKeuze(5);
 
         switch (searchMenuChoice) {
             case 1:
@@ -93,7 +91,7 @@ public class Menu {
                 break;
             case 2:
                 System.out.println("Voer het jaar van de game in om te zoeken:");
-                int gameJaar = Menu.MenuKeuze(2030, scanner);
+                int gameJaar = intKeuze();
                 scanner.nextLine();
                 operate.searchByJaar(gameJaar);
                 break;
@@ -121,16 +119,14 @@ public class Menu {
         System.out.println("║5. Terug                              ║");
         System.out.println("╚══════════════════════════════════════╝");
         System.out.print  ("   Kies een optie: ");
-        int orderMenuChoice = MenuKeuze(4);
+        int orderMenuChoice = menuKeuze(4);
 
         switch (orderMenuChoice) {
             case 1:
                 operate.ratingByavgRating();
-
                 break;
             case 2:
                 operate.ratingByReleaseYear ();
-
                 break;
             case 3:
                 operate.ratingByPlatform();
@@ -172,7 +168,7 @@ public class Menu {
     }
 
     // Deze methode wordt gebruikt om menukeuzes te valideren zodat de app niet crasht als iemand bijv een float invult
-    int MenuKeuze(int aantalKeuzes) {
+    int menuKeuze(int aantalKeuzes) {
         int menuKeuze;
         while (true) {
             try {
@@ -191,7 +187,7 @@ public class Menu {
     }
 
     // static versie van de methode zodat deze kan worden gebruikt door Main en Operate
-    public static int MenuKeuze(int aantalKeuzes, Scanner scanner) {
+    public static int menuKeuze(int aantalKeuzes, Scanner scanner) {
         int menuKeuze;
         while (true) {
             try {
@@ -207,5 +203,23 @@ public class Menu {
             }
         }
         return menuKeuze;
+    }
+    // deze functie dwingt een positieve int input af
+    public int intKeuze() {
+        int intKeuze;
+        while (true) {
+            try {
+                intKeuze = scanner.nextInt();
+                if (intKeuze >= 1){
+                    scanner.nextLine();
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Ongeldige keuze, probeer het opnieuw.");
+                scanner.nextLine();
+
+            }
+        }
+        return intKeuze;
     }
 }

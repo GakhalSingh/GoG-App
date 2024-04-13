@@ -33,11 +33,11 @@ public class Operate {
             System.out.println("Geef je gebruikersnaam:");
             String username = scanner.nextLine();
             System.out.println("Geef de gameplay score (1-10):");
-            int gameplayScore = Menu.MenuKeuze(10, scanner);
+            int gameplayScore = Menu.menuKeuze(10, scanner);
             System.out.println("Geef de graphics score (1-10):");
-            int graphicsScore = Menu.MenuKeuze(10, scanner);
+            int graphicsScore = Menu.menuKeuze(10, scanner);
             System.out.println("Geef de storyline score (1-10):");
-            int storylineScore = Menu.MenuKeuze(10, scanner);
+            int storylineScore = Menu.menuKeuze(10, scanner);
             scanner.nextLine();
             System.out.println("Voeg een opmerking toe:");
             String comment = scanner.nextLine();
@@ -67,7 +67,7 @@ public class Operate {
             //TODO een andere versie van displayEnquete maken die dit geeft als er geen parameter is
             System.out.println("Vul een review ID in om de bijbehorende enquete te lezen, " +
                     "toets 0 in om terug te gaan naar het hoofdmenu.");
-            int enqueteChoice = Menu.MenuKeuze(99999, scanner);
+            int enqueteChoice = Menu.menuKeuze(99999, scanner);
             System.out.println();
             if (enqueteChoice == 0){
                 return;
