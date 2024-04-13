@@ -1,5 +1,6 @@
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -22,10 +23,7 @@ public class Menu {
         System.out.println("**********************************");
         System.out.print  ("        Kies een optie: ");
     }
-    public int getMenuChoice() {
 
-        return scanner.nextInt();
-    }
     public void addMenu() {
         System.out.println("*******************************");
         System.out.println("1. Nieuwe game review toevoegen");
@@ -34,7 +32,7 @@ public class Menu {
         System.out.println("4. Terug");
         System.out.println("*******************************");
         System.out.print  ("   Kies een optie: ");
-        int addMenuChoice = scanner.nextInt();
+        int addMenuChoice = MenuKeuze(4);
 
         switch (addMenuChoice) {
             case 1:
@@ -66,8 +64,8 @@ public class Menu {
         System.out.println("5. Terug");
         System.out.println("*******************************");
         System.out.print  ("   Kies een optie: ");
-        int searchMenuChoice = scanner.nextInt();
-        scanner.nextLine();
+
+        int searchMenuChoice = MenuKeuze(5);
 
         switch (searchMenuChoice) {
             case 1:
@@ -77,7 +75,7 @@ public class Menu {
                 break;
             case 2:
                 System.out.println("Voer het jaar van de game in om te zoeken:");
-                int gameJaar = scanner.nextInt();
+                int gameJaar = Menu.MenuKeuze(2030, scanner);
                 scanner.nextLine();
                 operate.searchByJaar(gameJaar);
                 break;
@@ -93,9 +91,6 @@ public class Menu {
             case 5:
                 mainMenu();
                 break;
-            default:
-                System.out.println("Ongeldige keuze. Probeer opnieuw.");
-                break;
         }
     }
 
@@ -107,7 +102,7 @@ public class Menu {
         System.out.println ("4. Terug");
         System.out.println("******************************");
         System.out.print  ("   Kies een optie: ");
-        int orderMenuChoice = scanner.nextInt();
+        int orderMenuChoice = MenuKeuze(4);
 
         switch (orderMenuChoice) {
             case 1:
@@ -141,5 +136,43 @@ public class Menu {
 
     public void closeScanner() {
         scanner.close();
+    }
+
+    // Deze methode wordt gebruikt om menukeuzes te valideren zodat de app niet crasht als iemand bijv een float invult
+    int MenuKeuze(int aantalKeuzes) {
+        int menuKeuze;
+        while (true) {
+            try {
+                menuKeuze = scanner.nextInt();
+                if ((menuKeuze <= aantalKeuzes) || (menuKeuze >= 1)){
+                    scanner.nextLine();
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Ongeldige keuze, probeer het opnieuw.");
+                scanner.nextLine();
+
+            }
+        }
+        return menuKeuze;
+    }
+
+    // static versie van de methode zodat deze kan worden gebruikt door Main en Operate
+    public static int MenuKeuze(int aantalKeuzes, Scanner scanner) {
+        int menuKeuze;
+        while (true) {
+            try {
+                menuKeuze = scanner.nextInt();
+                if ((menuKeuze <= aantalKeuzes) || (menuKeuze >= 1)){
+                    scanner.nextLine();
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Ongeldige keuze, probeer het opnieuw.");
+                scanner.nextLine();
+
+            }
+        }
+        return menuKeuze;
     }
 }

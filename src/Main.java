@@ -10,7 +10,7 @@ public class Main {
         try {
             while (true) {
                 menu.mainMenu();
-                int mainMenuVraag = menu.getMenuChoice();
+                int mainMenuVraag = Menu.MenuKeuze(5, scanner);
 
                 switch (mainMenuVraag) {
                     case 1:
