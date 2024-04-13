@@ -1,5 +1,8 @@
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import static util.Display.cleanScreen;
 
 public class Menu {
     private Operate operate;
@@ -29,6 +32,33 @@ public class Menu {
         System.out.println("║ 5. Exit                      ║");
         System.out.println("╚══════════════════════════════╝");
         System.out.print  ("~ ~ ~  Kies een optie :  ~ ~ ~");
+        int mainMenuVraag = menuKeuze(5);
+        cleanScreen();
+
+        switch (mainMenuVraag) {
+            case 1:
+                System.out.println("Je hebt gekozen voor Game Review Toevoegen.");
+                addMenu();
+                break;
+            case 2:
+                System.out.println("Je hebt gekozen voor Game Opzoeken.");
+                searchMenu();
+                break;
+            case 3:
+                System.out.println("Je hebt gekozen voor Ranglijst.");
+                orderMenu();
+                break;
+            case 4:
+                System.out.println("Games in de uitverkoop:");
+                salesMenu();
+                break;
+            case 5:
+                System.out.println("Bedankt voor het gebruik van Gameshop!");
+                closeScanner();
+                System.exit(0);
+            default:
+                System.out.println("Ongeldige keuze. Probeer opnieuw.");
+        }
     }
 
     public void addMenu() {
@@ -40,6 +70,7 @@ public class Menu {
         System.out.println("╚═════════════════════════════════╝");
         System.out.print  ("~ ~ ~  ~ Kies een optie :  ~ ~ ~ ~");
         int addMenuChoice = menuKeuze(4);
+        cleanScreen();
 
         switch (addMenuChoice) {
             case 1:
@@ -82,6 +113,7 @@ public class Menu {
         System.out.print("   Kies een optie: ");
 
         int searchMenuChoice = menuKeuze(5);
+        cleanScreen();
 
         switch (searchMenuChoice) {
             case 1:
@@ -119,7 +151,9 @@ public class Menu {
         System.out.println("║5. Terug                              ║");
         System.out.println("╚══════════════════════════════════════╝");
         System.out.print  ("   Kies een optie: ");
+
         int orderMenuChoice = menuKeuze(4);
+        cleanScreen();
 
         switch (orderMenuChoice) {
             case 1:
@@ -179,8 +213,8 @@ public class Menu {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Ongeldige keuze, probeer het opnieuw.");
+                cleanScreen();
                 scanner.nextLine();
-
             }
         }
         return menuKeuze;
@@ -198,6 +232,7 @@ public class Menu {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Ongeldige keuze, probeer het opnieuw.");
+                cleanScreen();
                 scanner.nextLine();
 
             }
@@ -216,6 +251,7 @@ public class Menu {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Ongeldige keuze, probeer het opnieuw.");
+                cleanScreen();
                 scanner.nextLine();
 
             }

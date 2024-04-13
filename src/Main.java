@@ -10,32 +10,6 @@ public class Main {
         try {
             while (true) {
                 menu.mainMenu();
-                int mainMenuVraag = Menu.menuKeuze(5, scanner);
-
-                switch (mainMenuVraag) {
-                    case 1:
-                        System.out.println("Je hebt gekozen voor Game Review Toevoegen.");
-                        menu.addMenu();
-                        break;
-                    case 2:
-                        System.out.println("Je hebt gekozen voor Game Opzoeken.");
-                        menu.searchMenu();
-                        break;
-                    case 3:
-                        System.out.println("Je hebt gekozen voor Ranglijst.");
-                        menu.orderMenu();
-                        break;
-                    case 4:
-                        System.out.println("Games in de uitverkoop:");
-                        menu.salesMenu();
-                        break;
-                    case 5:
-                        System.out.println("Bedankt voor het gebruik van Gameshop!");
-                        menu.closeScanner();
-                        System.exit(0);
-                    default:
-                        System.out.println("Ongeldige keuze. Probeer opnieuw.");
-                }
             }
         } catch (Exception e) {
             e.printStackTrace();
