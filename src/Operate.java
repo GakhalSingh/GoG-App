@@ -172,7 +172,7 @@ public class Operate {
         boolean found = false;
         for (Game game : gameList) {
             if (game.isOnSale() >= 1 && game.isOnSale() <= gameOnSale) {
-                System.out.printf("| %3d %s | %20s | € %3.2f |", game.isOnSale(), "%", game.getGameTitle(), game.getPrice());
+                System.out.printf("║ %3d %s | %20s | € %3.2f ║", game.isOnSale(), "%", game.getGameTitle(), game.getPrice());
                 System.out.println();
                 found = true;
 
