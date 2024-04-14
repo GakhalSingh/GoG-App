@@ -225,11 +225,14 @@ public class Operate {
         System.out.println ("Rank op basis van Eind Score: ");
         DecimalFormat df = new DecimalFormat("#.0");
         int rank =1;
+        System.out.println("╔═════════════════════════════════════════════════════════════════╗");
         for (Game game : gameList){
-            System.out.println("Rank: "+ rank + "\t\t" + String.format("%.1f", game.getAvgRating()) + "\tGameTitel: " + game.getGameTitle());
+            System.out.printf("║ Rank: %-4s ║ %.1f  GameTitle: %-34s ║\n", rank, game.getAvgRating(), game.getGameTitle());
             rank++;
 
         }
+        System.out.println("╚═════════════════════════════════════════════════════════════════╝");
+
 
     }
 
@@ -241,10 +244,11 @@ public class Operate {
             }
         });
         System.out.println ("Rank op basis van ReleaseYear: ");
+        System.out.println("╔══════════════════════════════════════════════════════╗");
         for (Game game : gameList){
-            System.out.println(game.getReleaseYear() +"\tGameTitel: "+ game.getGameTitle());
-
+            System.out.printf("║ %d ║ GameTitel: %-34s ║\n", game.getReleaseYear(), game.getGameTitle());
         }
+        System.out.println("╚══════════════════════════════════════════════════════╝");
     }
 
     public void ratingByPlatform() {
@@ -255,10 +259,12 @@ public class Operate {
             }
         });
         System.out.println ("Rank op basis van Platform: ");
+        System.out.println("╔══════════════════════════════════════════════════════╗");
         for (Game game : gameList){
-            System.out.println(game.getPlatform() +"\tGameTitel:"+ game.getGameTitle());
+            System.out.printf("║ %-15s║\tGameTitel:  %-23s║\n", game.getPlatform(), game.getGameTitle());
 
         }
+        System.out.println("╚══════════════════════════════════════════════════════╝");
     }
 
     public void ratingBygameType(){
@@ -269,10 +275,12 @@ public class Operate {
             }
         });
         System.out.println ("Rank op basis van Type: ");
+        System.out.println("╔══════════════════════════════════════════════════════╗");
         for (Game game : gameList){
-            System.out.println(game.getGameType() +"\tGameTitel:"+ game.getGameTitle());
+            System.out.printf( "║ %-8s║\tGameTitel:  %-30s ║\n", game.getGameType(), game.getGameTitle());
 
         }
+        System.out.println("╚══════════════════════════════════════════════════════╝");
     }
 
     public void showAll() {
