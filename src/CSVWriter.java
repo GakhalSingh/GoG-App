@@ -11,7 +11,7 @@ public class CSVWriter {
     public void writeGames(List<Game> games, String filePath) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
             // Schrijf de kop van het CSV-bestand
-            writer.println("ID;GameTitle;Platform;ReleaseYear;OnSale;Pric,Type");
+            writer.println("ID;GameTitle;Platform;ReleaseYear;OnSale;Pric;Type");
 
             // Schrijf elk Game-object naar het CSV-bestand
             for (Game game : games) {
